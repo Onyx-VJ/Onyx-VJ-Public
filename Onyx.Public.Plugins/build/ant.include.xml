@@ -3,24 +3,27 @@
 	<tstamp>
 		<format property="plugin.build.timestamp" pattern="yyyymmddHHmmss" />
 	</tstamp>
+	
+	<!-- DEFAULTS -->
+	<property name="plugin.flex.sdk"			location="C:/Program Files (x86)/Adobe/Adobe Flash Builder 4 Plug-in/sdks/4.5.0" />
+	<property name="plugin.flex.mxmlc"			location="${plugin.flex.sdk}/bin/mxmlc.exe" />
+	<property name="plugin.flex.compc"			location="${plugin.flex.sdk}/lib/compc.jar" />
+
+	<property name="plugin.build.target"		location="${build.root}/bin" />
+	<property name="plugin.build.lib"			location="${build.root}/sdk/Onyx.Core.SDK" />
+	<property name="plugin.build.configPath"	location="${build.root}/build/config" />
+	<property name="plugin.build.swc"			location="${plugin.build.lib}.swc" />
+	<property name="plugin.build.linkReport"	location="${plugin.build.lib}.LinkReport.xml" />
+	<property name="plugin.build.ver"			location="${plugin.build.lib}.version" />
+	<property name="plugin.build.src"			location="${build.root}/src/" />
+	<property name="plugin.build.baseconfig"	value="flex" />
+	<property name="plugin.build.config"		value="release" />
+
+	<!-- Converts the name of the ant file to the output name (i.e) Onyx.Public.CPU.Filters -->
+	<basename property="plugin.build.name" file="${ant.file}" suffix="xml" />
 
 	<!-- Creates a plugin manifest file: EXPECTS EVERYTHING TO BE 4 LEVELS DEEP! -->
 	<target name="build.plugins">
-
-		<!-- DEFAULTS -->
-		<property name="plugin.flex.sdk"			location="C:/Program Files (x86)/Adobe/Adobe Flash Builder 4 Plug-in/sdks/4.5.0" />
-		<property name="plugin.flex.mxmlc"			location="${plugin.flex.sdk}/bin/mxmlc.exe" />
-		<property name="plugin.flex.compc"			location="${plugin.flex.sdk}/lib/compc.jar" />
-		
-		<property name="plugin.build.target"		location="${build.root}/bin" />
-		<property name="plugin.build.lib"			location="${build.root}/sdk/Onyx.Core.SDK" />
-		<property name="plugin.build.configPath"	location="${build.root}/build/config" />
-		<property name="plugin.build.swc"			location="${plugin.build.lib}.swc" />
-		<property name="plugin.build.linkReport"	location="${plugin.build.lib}.LinkReport.xml" />
-		<property name="plugin.build.ver"			location="${plugin.build.lib}.version" />
-		<property name="plugin.build.src"			location="${build.root}/src/" />
-		<property name="plugin.build.baseconfig"	value="flex" />
-		<property name="plugin.build.config"		value="release" />
 
 		<property name="plugin.build.temp"			location="${build.root}/build/temp" />
 		<property name="plugin.build.templatePath"	location="${build.root}/build/manifest/OnyxPluginManifest.as" />
@@ -51,9 +54,6 @@
 			</path>
 	        <map from="${build.root}/src/" to="" />
 		</pathconvert>
-
-		<!-- Converts the name of the ant file to the output name (i.e) Onyx.Public.CPU.Filters -->
-		<basename property="plugin.build.name" file="${ant.file}" suffix="xml" />
 		
 		<!-- replace filenames with fully qualified names -->
 		<propertyregex	property	= "plugin.build.fileName"
@@ -113,12 +113,26 @@
 			<arg line="-library-path='${plugin.build.swc}'"/>
 			<arg line="-load-externs='${plugin.build.linkReport}'"/>
 			<arg line="-link-report='${plugin.build.temp}/${plugin.build.name}.xml'"/>
-			<arg line="-output='${plugin.build.target}/${plugin.build.name}.swf'"/>
+			<arg line="-output='${plugin.build.target}/plugins/${plugin.build.name}.swf'"/>
 			<arg line="'${temp.plugin.file}'"/>
 		</exec>
-		
+
 		<delete file="${temp.plugin.file}" />
+
+	</target>
+	
+	<target name="build.patch">
 		
+		<exec executable="${plugin.flex.mxmlc}" failonerror="true">
+			<arg line="-load-config+='${plugin.build.configPath}/${plugin.build.config}.xml'"/>
+			<arg line="--source-path='${build.root}/src/'"/>
+			<arg line="--static-link-runtime-shared-libraries" />
+			<arg line="-library-path='${plugin.build.swc}'"/>
+			<arg line="-load-externs='${plugin.build.linkReport}'"/>
+			<arg line="-output='${plugin.build.target}/library/patches/${plugin.build.name}.swf'"/>
+			<arg line="'${plugin.build.src}/${plugin.class}.as'"/>
+		</exec>
+
 	</target>
 
 </project>

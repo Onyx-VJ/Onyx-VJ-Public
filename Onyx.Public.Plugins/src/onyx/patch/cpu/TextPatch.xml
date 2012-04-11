@@ -1,0 +1,15 @@
+<project name="build.module" default="build">
+
+	<property name="build.root" location="../../../../" />
+	
+	<import file="${build.root}/build/ant.include.xml" />
+
+	<target name="build">
+
+		<antcall target="build.patch">
+			<param name="plugin.class" value="onyx/patch/cpu/TextPatch"/>
+		</antcall>
+
+	</target>
+	
+</project>
