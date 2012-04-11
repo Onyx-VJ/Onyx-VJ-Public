@@ -1,0 +1,124 @@
+<project>
+
+	<tstamp>
+		<format property="plugin.build.timestamp" pattern="yyyymmddHHmmss" />
+	</tstamp>
+
+	<!-- Creates a plugin manifest file: EXPECTS EVERYTHING TO BE 4 LEVELS DEEP! -->
+	<target name="build.plugins">
+
+		<!-- DEFAULTS -->
+		<property name="plugin.flex.sdk"			location="C:/Program Files (x86)/Adobe/Adobe Flash Builder 4 Plug-in/sdks/4.5.0" />
+		<property name="plugin.flex.mxmlc"			location="${plugin.flex.sdk}/bin/mxmlc.exe" />
+		<property name="plugin.flex.compc"			location="${plugin.flex.sdk}/lib/compc.jar" />
+		
+		<property name="plugin.build.target"		location="${build.root}/bin" />
+		<property name="plugin.build.lib"			location="${build.root}/sdk/Onyx.Core.SDK" />
+		<property name="plugin.build.configPath"	location="${build.root}/build/config" />
+		<property name="plugin.build.swc"			location="${plugin.build.lib}.swc" />
+		<property name="plugin.build.linkReport"	location="${plugin.build.lib}.LinkReport.xml" />
+		<property name="plugin.build.ver"			location="${plugin.build.lib}.version" />
+		<property name="plugin.build.src"			location="${build.root}/src/" />
+		<property name="plugin.build.baseconfig"	value="flex" />
+		<property name="plugin.build.config"		value="release" />
+
+		<property name="plugin.build.temp"			location="${build.root}/build/temp" />
+		<property name="plugin.build.templatePath"	location="${build.root}/build/manifest/OnyxPluginManifest.as" />
+		
+		<!-- THIS SHOULD BE PASSED IN -->
+		<property name="plugin.build.classes"		location="" />
+
+		<!-- LOAD SDK VERSION -->
+		<property file="${plugin.build.ver}" />
+		
+		<!-- ANT CONTRIB -->
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+			<classpath>
+				<pathelement location="${build.root}/build/ant-contrib-0.6.jar"/>
+			</classpath>
+		</taskdef>
+
+		<pathconvert property="plugin.build.files" pathsep=";" dirsep="/">
+			<path>
+				<fileset dir="${basedir}" includes="*.as"/>
+			</path>
+	        <map from="${build.root}/src/" to="" />
+		</pathconvert>
+
+		<pathconvert property="plugin.build.import" pathsep=";${line.separator}" dirsep=".">
+			<path>
+				<pathelement location="${basedir}.*"/>
+			</path>
+	        <map from="${build.root}/src/" to="" />
+		</pathconvert>
+
+		<!-- Converts the name of the ant file to the output name (i.e) Onyx.Public.CPU.Filters -->
+		<basename property="plugin.build.name" file="${ant.file}" suffix="xml" />
+		
+		<!-- replace filenames with fully qualified names -->
+		<propertyregex	property	= "plugin.build.fileName"
+						input		= "${plugin.build.name}"
+						regexp		= "\."
+						replace		= ""
+						global		= "true"
+						override	= "true" />
+
+		<!-- replace filenames with fully qualified names -->
+		<propertyregex	property	= "plugin.build.qualifiedClassNames"
+						input		= "${plugin.build.files}"
+						regexp		= "([^\.]*)\/([^\.]*)\/([^\.]*)\/([^\.]*)\.as"
+						replace		= "\1.\2.\3::\4"
+						global		= "true"
+						override	= "true"
+		/>
+
+		<!-- replace filenames with fully qualified names -->
+		<propertyregex	property	= "plugin.build.qualifiedClassPaths"
+						input		= "${plugin.build.qualifiedClassNames}"
+						regexp		= "::"
+						replace		= "."
+						global		= "true"
+						override	= "true"
+		/>
+		
+		<property name="plugin.build.templatePath"	location="${plugin.build.temp}/${plugin.build.name}" />
+		
+		<!-- copy the manifest -->
+		<antcall target="build.plugins.buildManifest"/>
+		
+	</target>
+	
+	<!-- build manifest -->
+	<target name="build.plugins.buildManifest">
+		
+		<property name="temp.plugin.name" value="${plugin.build.fileName}${plugin.build.timestamp}" />
+		<property name="temp.plugin.file" location="${plugin.build.temp}/${temp.plugin.name}.as" />
+		
+		<!-- Copy the file -->
+		<copy file="${plugin.build.templatePath}" tofile="${temp.plugin.file}" />
+		
+		<!-- replace vars in the template -->
+		<replaceregexp file="${temp.plugin.file}"	match="%PLUGIN.CLASSNAME%"		replace="${temp.plugin.name}" />
+		<replaceregexp file="${temp.plugin.file}"	match="%PLUGIN.INCLUDES%"		replace="" />
+		<replaceregexp file="${temp.plugin.file}"	match="%PLUGIN.IMPORTS%"		replace="import ${plugin.build.import};" />
+		<replaceregexp file="${temp.plugin.file}"	match="%PLUGIN.CLASSES%"		replace="${plugin.build.qualifiedClassPaths}" />
+		<replaceregexp file="${temp.plugin.file}"	match="%PLUGIN.MANIFEST%"		replace="${plugin.build.qualifiedClassNames}" />
+		<replaceregexp file="${temp.plugin.file}"	match="%PLUGIN.SDK.VERSION%"	replace="${Onyx.Core.SDK.version}" />
+		<replaceregexp file="${temp.plugin.file}"	match="%PLUGIN.TIMESTAMP%"		replace="${plugin.build.timestamp}" />
+		
+		<exec executable="${plugin.flex.mxmlc}" failonerror="true">
+			<arg line="-load-config+='${plugin.build.configPath}/${plugin.build.config}.xml'"/>
+			<arg line="--source-path='${build.root}/src/'"/>
+			<arg line="--static-link-runtime-shared-libraries" />
+			<arg line="-library-path='${plugin.build.swc}'"/>
+			<arg line="-load-externs='${plugin.build.linkReport}'"/>
+			<arg line="-link-report='${plugin.build.temp}/${plugin.build.name}.xml'"/>
+			<arg line="-output='${plugin.build.target}/${plugin.build.name}.swf'"/>
+			<arg line="'${temp.plugin.file}'"/>
+		</exec>
+		
+		<delete file="${temp.plugin.file}" />
+		
+	</target>
+
+</project>

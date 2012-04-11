@@ -1,0 +1,170 @@
+<report>
+  <scripts>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\com\quasimondo\geom\ColorMatrix.as" mod="1334162564849" size="10321" optimizedsize="9731">
+      <def id="com.quasimondo.geom:ColorMatrix" />
+      <pre id="Object" />
+      <dep id="flash.display:BitmapData" />
+      <dep id="AS3" />
+      <dep id="flash.filters:ColorMatrixFilter" />
+      <dep id="Math" />
+      <dep id="flash.geom:Matrix3D" />
+      <dep id="flash.geom:Point" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20121711161714.as" mod="1334175434689" size="529" optimizedsize="288">
+      <def id="OnyxPublicCPUFilters20121711161714" />
+      <pre id="flash.display:Sprite" />
+      <dep id="onyx.filter.cpu:NoiseFilter" />
+      <dep id="onyx.filter.cpu:RepeaterFilter" />
+      <dep id="AS3" />
+      <dep id="onyx.filter.cpu:ColorFilter" />
+      <dep id="onyx.filter.cpu:HaloFilter" />
+      <dep id="onyx.filter.cpu:MirrorFilter" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\NoiseFilter.as" mod="1334172425783" size="1758" optimizedsize="1524">
+      <def id="onyx.filter.cpu:NoiseFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplaySurface" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="flash.display:BitmapData" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="onyx.core:IPluginBlendCPU" />
+      <dep id="Math" />
+      <dep id="onyx.core:Onyx" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.plugin:PluginStatus" />
+      <dep id="onyx.display:DisplaySurfaceProxy" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="onyx.parameter:IParameter" />
+      <dep id="flash.geom:ColorTransform" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\RepeaterFilter.as" mod="1334175432471" size="1362" optimizedsize="1130">
+      <def id="onyx.filter.cpu:RepeaterFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplaySurface" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="flash.display:BitmapData" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="onyx.core:parameter" />
+      <dep id="flash.geom:Point" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\sdk\Onyx.Core.SDK.swc(onyx.display:DisplaySurface)" mod="1331666101599" size="323" optimizedsize="315">
+      <def id="onyx.display:DisplaySurface" />
+      <pre id="onyx.core:IDisplaySurface" />
+      <pre id="flash.display:BitmapData" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\sdk\Onyx.Core.SDK.swc(onyx.display:DisplaySurfaceProxy)" mod="1333740035405" size="851" optimizedsize="842">
+      <def id="onyx.display:DisplaySurfaceProxy" />
+      <pre id="onyx.core:IDisplaySurface" />
+      <pre id="Object" />
+      <dep id="flash.filters:BitmapFilter" />
+      <dep id="flash.display:IBitmapDrawable" />
+      <dep id="flash.display:BitmapData" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="flash.geom:ColorTransform" />
+      <dep id="flash.geom:Point" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\sdk\Onyx.Core.SDK.swc(onyx.display:CONST_IDENTITY)" mod="1331574997590" size="103" optimizedsize="102">
+      <def id="onyx.display:CONST_IDENTITY" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Point" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\sdk\Onyx.Core.SDK.swc(onyx.core:IPluginBlend)" mod="1328211176421" size="135" optimizedsize="114">
+      <def id="onyx.core:IPluginBlend" />
+      <pre id="onyx.core:IPlugin" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\ColorFilter.as" mod="1334172415575" size="1376" optimizedsize="1114">
+      <def id="onyx.filter.cpu:ColorFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplaySurface" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="com.quasimondo.geom:ColorMatrix" />
+      <dep id="AS3" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.display:CONST_IDENTITY" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\MirrorFilter.as" mod="1334172423031" size="1616" optimizedsize="1279">
+      <def id="onyx.filter.cpu:MirrorFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplaySurface" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\HaloFilter.as" mod="1334172419615" size="1503" optimizedsize="1164">
+      <def id="onyx.filter.cpu:HaloFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplaySurface" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="onyx.core:IPlugin" />
+      <dep id="AS3" />
+      <dep id="onyx.core:IPluginBlendCPU" />
+      <dep id="onyx.core:Onyx" />
+      <dep id="flash.filters:BlurFilter" />
+      <dep id="onyx.display:DisplaySurface" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.display:CONST_IDENTITY" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\sdk\Onyx.Core.SDK.swc(onyx.core:IPluginBlendCPU)" mod="1333746538827" size="356" optimizedsize="336">
+      <def id="onyx.core:IPluginBlendCPU" />
+      <pre id="onyx.core:IPluginBlend" />
+      <pre id="Object" />
+      <dep id="onyx.core:IDisplaySurface" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="flash.geom:ColorTransform" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\sdk\Onyx.Core.SDK.swc(onyx.plugin:PluginFilterCPU)" mod="1333382377344" size="464" optimizedsize="407">
+      <def id="onyx.plugin:PluginFilterCPU" />
+      <pre id="onyx.plugin:PluginBase" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="AS3" />
+      <dep id="onyx.core:parameter" />
+    </script>
+  </scripts>
+  <external-defs>
+    <ext id="onyx.core:IDisplaySurface" />
+    <ext id="flash.geom:Matrix" />
+    <ext id="onyx.plugin:PluginBase" />
+    <ext id="AS3" />
+    <ext id="flash.geom:Matrix3D" />
+    <ext id="onyx.core:IPlugin" />
+    <ext id="flash.filters:BlurFilter" />
+    <ext id="flash.geom:ColorTransform" />
+    <ext id="flash.filters:BitmapFilter" />
+    <ext id="flash.geom:Point" />
+    <ext id="onyx.parameter:IParameter" />
+    <ext id="Math" />
+    <ext id="flash.display:BitmapData" />
+    <ext id="onyx.core:parameter" />
+    <ext id="flash.geom:Rectangle" />
+    <ext id="onyx.core:Onyx" />
+    <ext id="onyx.plugin:PluginStatus" />
+    <ext id="flash.filters:ColorMatrixFilter" />
+    <ext id="onyx.core:IDisplayContextCPU" />
+    <ext id="flash.display:IBitmapDrawable" />
+    <ext id="Object" />
+    <ext id="flash.display:Sprite" />
+    <ext id="onyx.core:IPluginFilterCPU" />
+  </external-defs>
+</report>

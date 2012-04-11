@@ -1,0 +1,14 @@
+<project	name	= "build.plugins.release"
+			default	= "build.plugins.release"
+>
+
+	<target name="build.plugins.release">
+		
+	    <subant failonerror="true" verbose="true">
+	        <fileset dir="../src/" includes="**/**.xml"/>
+	    	<target name="build" />
+	    </subant>
+		
+	</target>
+
+</project>

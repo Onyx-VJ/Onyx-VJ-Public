@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<!--
+
+	ADOBE SYSTEMS INCORPORATED
+	Copyright 2005-2007 Adobe Systems Incorporated
+	All Rights Reserved.
+
+	NOTICE: Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<flex-config>
+
+	<!-- Specifies the minimum player version that will run the compiled SWF. -->
+	<target-player>11.3.0</target-player>
+
+	<!-- Specifies the version of the compiled SWF -->
+	<swf-version>16</swf-version>
+
+	<compiler>
+		 <define>
+			<name>CONFIG::VERBOSE</name>
+			<value>true</value>
+		 </define>
+		 <define>
+			<name>CONFIG::DEBUG</name>
+			<value>true</value>
+		 </define>
+		 <define>
+			<name>CONFIG::RELEASE</name>
+			<value>false</value>
+		 </define>
+		 <define>
+			<name>CONFIG::GC</name>
+			<value>false</value>
+		 </define>
+		 <define>
+			<name>CONFIG::GL</name>
+			<value>true</value>
+		 </define>
+		 <define>
+			<name>CONFIG::WEB</name>
+			<value>false</value>
+		 </define>
+		 <define>
+			<name>CONFIG::AIR</name>
+			<value>true</value>
+		 </define>
+
+		<keep-as3-metadata>
+			 <name>Event</name>
+			 <name>Parameter</name>
+			 <name>PluginInfo</name>
+		</keep-as3-metadata>
+
+		<!-- Turn on generation of accessible SWFs. -->
+		<accessible>false</accessible>
+
+		<!-- Specifies the locales for internationalization. -->
+		<locale>
+			 <locale-element>en_US</locale-element>
+		</locale>
+		
+		<debug>true</debug>
+		
+	</compiler>
+
+	<!-- Metadata added to SWFs via the SWF Metadata tag. -->
+	<metadata>
+		<title>Onyx-VJ</title>
+		<description>http://www.onyx-vj.com/</description>
+		<language>EN</language>
+	</metadata>
+
+</flex-config>
