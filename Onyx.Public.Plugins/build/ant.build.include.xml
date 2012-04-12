@@ -113,7 +113,7 @@
 			<arg line="-library-path='${plugin.build.swc}'"/>
 			<arg line="-load-externs='${plugin.build.linkReport}'"/>
 			<arg line="-link-report='${plugin.build.temp}/${plugin.build.name}.xml'"/>
-			<arg line="-output='${plugin.build.target}/plugins/${plugin.build.name}.swf'"/>
+			<arg line="-output='${plugin.build.target}/onyx/plugins/${plugin.build.name}.swf'"/>
 			<arg line="'${temp.plugin.file}'"/>
 		</exec>
 
