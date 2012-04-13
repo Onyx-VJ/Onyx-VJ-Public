@@ -21,10 +21,6 @@
 
 	<compiler>
 		 <define>
-			<name>CONFIG::VERBOSE</name>
-			<value>true</value>
-		 </define>
-		 <define>
 			<name>CONFIG::DEBUG</name>
 			<value>true</value>
 		 </define>
@@ -32,23 +28,6 @@
 			<name>CONFIG::RELEASE</name>
 			<value>false</value>
 		 </define>
-		 <define>
-			<name>CONFIG::GC</name>
-			<value>false</value>
-		 </define>
-		 <define>
-			<name>CONFIG::GL</name>
-			<value>true</value>
-		 </define>
-		 <define>
-			<name>CONFIG::WEB</name>
-			<value>false</value>
-		 </define>
-		 <define>
-			<name>CONFIG::AIR</name>
-			<value>true</value>
-		 </define>
-
 		<keep-as3-metadata>
 			 <name>Event</name>
 			 <name>Parameter</name>
@@ -64,12 +43,12 @@
 		</locale>
 		
 		<debug>true</debug>
-		
+
 	</compiler>
 
 	<!-- Metadata added to SWFs via the SWF Metadata tag. -->
 	<metadata>
-		<title>Onyx-VJ</title>
+		<title>Onyx-VJ Public Plugins</title>
 		<description>http://www.onyx-vj.com/</description>
 		<language>EN</language>
 	</metadata>

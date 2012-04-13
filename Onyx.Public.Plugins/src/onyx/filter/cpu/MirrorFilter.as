@@ -18,9 +18,9 @@ package onyx.filter.cpu {
 		version		= '1.0'
 	)]
 	
-	[Parameter(type='number',		name='offset',	 	target='offset',		clamp='0,1', reset='0.5')]
-	[Parameter(type='boolean',		name='horizontal', 	target='horizontal',	reset='true')]
-	[Parameter(type='array',		name='order',	 	target='order',			values='auto,1h,2h', reset='auto')]
+	[Parameter(type='number',		id='offset',	 	target='offset',		clamp='0,1', reset='0.5')]
+	[Parameter(type='boolean',		id='horizontal', 	target='horizontal',	reset='true')]
+	[Parameter(type='array',		id='order',	 	target='order',			values='auto,1h,2h', reset='auto')]
 	public final class MirrorFilter extends PluginFilterCPU implements IPluginFilterCPU {
 
 		/**

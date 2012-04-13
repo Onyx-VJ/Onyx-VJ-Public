@@ -1,38 +1,44 @@
 /**
+ *	
+ *	Onyx-VJ 5.00.00 
  *
- *	License TBD
+ *	Coming soon to a theatre near you.
  *
+ *	New features: 
  *
+ *	- Rewritten Framework and API
  *
+ *		- Added modular plugin types for:
+ *			- BlendMode/BlendModeGL, Filter/FilterGL
+ *			- PlayModes (modifies time-based playback)
+ *			- Generators/Patches
+ *			- Macros
+ *			- Fonts
+ *			- Modules  
  *
+ *		- Parameters are now metadata based.
+ *		- Many more parameter types, as well as support for child-of-child parameterization.
+ *			- No more getters and setters for every parameter
+ *			- Better parameter invalidation
  *
+ *		- Display overhaul
+ *			- GPU Acceleration
+ *			- Mixed CPU/GPU modes
+ *			- Dynamic frame rates for individual display/layers
  *
+ *		- Interfaces and bindings
+ *			- Bindings are now serialized to parameters, meaning saving mixes saves your bindings
  *
+ *	- XML has been replaced with JSON
  *
+ *	- User Interface
+ *		- Cleaned up the user interface.  There are no longer stupid tabs you have to click on.
+ *		- Native 16:9 integration.  You can still doing 4:3, but the interface is now set to handle 16:9
+ *		- Skinnable User Interfaces.  (though for now only 1600x1200)
+ *		- Metadata based components for modules (no more linking necessary)
  *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ *	- For the future!
+ *		- Integration with processing and other generator frameworks
+ *		- FreeFrame/FreeFrameGL Integration
  *
  */ 

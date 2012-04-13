@@ -43,11 +43,12 @@
 		</locale>
 		
 		<debug>false</debug>
+
 	</compiler>
 
 	<!-- Metadata added to SWFs via the SWF Metadata tag. -->
 	<metadata>
-		<title>Onyx-VJ Public Plugin</title>
+		<title>Onyx-VJ Public Plugins</title>
 		<description>http://www.onyx-vj.com/</description>
 		<language>EN</language>
 	</metadata>

@@ -17,10 +17,10 @@ package onyx.filter.cpu {
 		version		= '1.0'
 	)]
 	
-	[Parameter(type='number',		name='quality', 	target='filter/quality', clamp='1,3')]
-	[Parameter(type='blendMode',	name='blendMode',	target='blendMode')]
-	[Parameter(type='number',		name='blurX', 		target='filter/blurX', clamp='0,40')]
-	[Parameter(type='number',		name='blurY', 		target='filter/blurY', clamp='0,40')]
+	[Parameter(type='number',		id='quality', 	target='filter/quality', clamp='1,3')]
+	[Parameter(type='blendMode',	id='blendMode',	target='blendMode')]
+	[Parameter(type='number',		id='blurX', 	target='filter/blurX', clamp='0,40')]
+	[Parameter(type='number',		id='blurY', 	target='filter/blurY', clamp='0,40')]
 	public final class HaloFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**

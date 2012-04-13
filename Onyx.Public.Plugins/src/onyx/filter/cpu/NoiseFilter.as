@@ -19,10 +19,10 @@ package onyx.filter.cpu {
 		version		= '1.0'
 	)]
 	
-	[Parameter(type='colorTransform',	name='colorTransform',	 	target='colorTransform',	channels='argb')]
-	[Parameter(type='boolean',			name='greyScale',	 	 	target='greyScale')]
-	[Parameter(type='blendMode',		name='blendMode',	 	 	target='blendMode')]
-	
+	[Parameter(type='colorTransform',	id='colorTransform',	target='colorTransform',	channels='argb')]
+	[Parameter(type='boolean',			id='greyScale',	 	 	target='greyScale')]
+	[Parameter(type='blendMode',		id='blendMode',	 	 	target='blendMode')]
+
 	public final class NoiseFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**

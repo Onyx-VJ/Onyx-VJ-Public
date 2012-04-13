@@ -13,11 +13,11 @@ package onyx.patch.cpu {
 	
 	use namespace parameter;
 	
-	[Parameter(type='color',		name='color', 		target='format/color')]
-	[Parameter(type='number',		name='size', 		target='format/size',	clamp='6,350')]
-	[Parameter(type='font',			name='font', 		target='format/font')]
-	[Parameter(type='boolean',		name='embedFonts', 	target='label/embedFonts')]
-	[Parameter(type='text',			name='text', 		target='label/text')]
+	[Parameter(type='color',		id='color', 		target='format/color')]
+	[Parameter(type='number',		id='size', 			target='format/size',	clamp='6,350')]
+	[Parameter(type='font',			id='font', 			target='format/font')]
+	[Parameter(type='boolean',		id='embedFonts', 	target='label/embedFonts')]
+	[Parameter(type='text',			id='text', 			target='label/text')]
 
 	final public class TextPatch extends PluginPatch {
 		

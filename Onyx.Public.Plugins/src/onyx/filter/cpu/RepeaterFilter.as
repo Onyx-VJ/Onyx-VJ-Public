@@ -16,8 +16,8 @@ package onyx.filter.cpu {
 		version		= '1.0'
 	)]
 	
-	[Parameter(type='number',		name='amount',	 	target='amount',		clamp='2,24', reset='2')]
-	
+	[Parameter(type='number',	id='amount',	 	target='amount',		clamp='2,24', reset='2')]
+
 	public final class RepeaterFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**

@@ -20,11 +20,11 @@ package onyx.filter.cpu {
 		version		= '1.0'
 	)]
 	
-	[Parameter(type='number',		name='brightness',	 	clamp='-1,1',	reset='0')]
-	[Parameter(type='number',		name='contrast',	 	clamp='-1,2',	reset='0')]
-	[Parameter(type='number',		name='saturation',	 	clamp='0,2',	reset='1')]
-	[Parameter(type='number',		name='hue',	 			clamp='-1,1',	reset='0')]
-	[Parameter(type='number',		name='threshold',	 	clamp='0,1',	reset='0')]
+	[Parameter(type='number',		id='brightness',	name='Brightness', 	clamp='-1,1',	reset='0')]
+	[Parameter(type='number',		id='contrast',		name='Contrast',	clamp='-1,2',	reset='0')]
+	[Parameter(type='number',		id='saturation',	name='Saturation',	clamp='0,2',	reset='1')]
+	[Parameter(type='number',		id='hue',	 		name='Hue',			clamp='-1,1',	reset='0')]
+	[Parameter(type='number',		id='threshold',		name='Threshold', 	clamp='0,1',	reset='0')]
 	
 	public final class ColorFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
