@@ -5,7 +5,7 @@
 	<import file="${build.root}/build/ant.build.include.xml" />
 
 	<target name="build">
-
+		
 		<basename property="plugin.patch.file" file="${ant.file}" suffix=".xml" />
 		
 		<antcall target="build.patch">
