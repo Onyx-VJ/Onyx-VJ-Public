@@ -20,7 +20,7 @@ package onyx.filter.cpu {
 	
 	[Parameter(type='number',		id='offset',	 	target='offset',		clamp='0,1', reset='0.5')]
 	[Parameter(type='boolean',		id='horizontal', 	target='horizontal',	reset='true')]
-	[Parameter(type='array',		id='order',	 	target='order',			values='auto,1h,2h', reset='auto')]
+	[Parameter(type='enum',			id='order',	 		target='order',			values='auto,1h,2h', reset='auto')]
 	public final class MirrorFilter extends PluginFilterCPU implements IPluginFilterCPU {
 
 		/**
