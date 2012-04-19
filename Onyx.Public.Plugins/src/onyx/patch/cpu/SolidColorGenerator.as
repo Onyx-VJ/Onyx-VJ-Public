@@ -57,7 +57,6 @@ package onyx.patch.cpu {
 
 			}
 			
-			// Console.Log(Console.WARNING, 'xxxxx', 0xFF | color);
 			surface.fillRect(surface.rect, 0xFF << 24 | color);
 			
 			// return

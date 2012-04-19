@@ -46,6 +46,11 @@ package onyx.patch.cpu {
 		private var buffer:BitmapData;
 		
 		/**
+		 * 	@private
+		 */
+		private var shape:Shape				= new Shape();
+		
+		/**
 		 * 	@public
 		 */
 		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
@@ -71,6 +76,7 @@ package onyx.patch.cpu {
 		parameter function clear():void {
 			
 			// clear
+			var graphics:Graphics	= shape.graphics;
 			graphics.clear();
 			graphics.lineStyle(thickness, color, alpha);
 			
@@ -82,6 +88,7 @@ package onyx.patch.cpu {
 		 * 	@private
 		 */
 		private function handleInteraction(e:InteractionEvent):void {
+			var graphics:Graphics	= shape.graphics;
 			
 			switch (e.type) {
 				case InteractionEvent.RIGHT_CLICK:
@@ -112,12 +119,16 @@ package onyx.patch.cpu {
 					break;
 			}
 			
+			invalid = true;
+			
 		}
 		
 		/**
 		 * 	@public
 		 */
 		override public function validate():void {
+			
+			var graphics:Graphics	= shape.graphics;
 			
 			// set line style
 			graphics.lineStyle(thickness, color, alpha);
@@ -130,7 +141,7 @@ package onyx.patch.cpu {
 		 * 	@public
 		 */
 		override public function update(time:Number):Boolean {
-			
+
 			// only say we should be rendered if invalid
 			return invalid;
 		}
@@ -152,7 +163,7 @@ package onyx.patch.cpu {
 			surface.fillRect(surface.rect, 0x00);
 			
 			// draw
-			surface.draw(this, null, null, null, null, true);
+			surface.draw(shape, null, null, null, null, true);
 			
 			// return
 			return true;
