@@ -29,6 +29,10 @@ package onyx.filter.cpu {
 		 * 	@private
 		 */
 		private var buffer:BitmapData;
+		
+		/**
+		 * 	@private
+		 */
 		private var matrix:Matrix;
 		
 		/**
@@ -53,28 +57,27 @@ package onyx.filter.cpu {
 			
 			matrix				= new Matrix(1 / amount, 0, 0, 1 / amount);
 			buffer				= new BitmapData(matrix.a * context.width, matrix.d * context.height, true, 0x00);
-//			buffer = new BitmapData();
 			
 			super.validate();
 		}
 		
-		public function render(surface:IDisplaySurface):void {
-			if (invalid) {
-				validate();
-			}
-			
-			buffer.draw(surface.nativeSurface, matrix);
+		/**
+		 * 	@public
+		 */
+		public function render(context:IDisplayContextCPU):void {
+
+			buffer.draw(context.nativeSurface, matrix);
 			
 			var square:int			= amount * amount;
 			var segmentX:Number		= context.width / amount;
 			var segmentY:Number		= context.height / amount;
-			var target:BitmapData	= surface.nativeSurface;
-			target.fillRect(target.rect, 0);
+			
+			context.clear();
 			
 			for (var count:int = 0; count < square; ++count) {
 				POINT.x = (count % amount) * segmentX;
 				POINT.y = int(count / amount) * segmentY;
-				target.copyPixels(buffer, buffer.rect, POINT);
+				context.copyPixels(buffer, buffer.rect, POINT);
 			}
 		}
 	}

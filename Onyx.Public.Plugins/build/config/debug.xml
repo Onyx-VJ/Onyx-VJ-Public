@@ -29,9 +29,9 @@
 			<value>false</value>
 		 </define>
 		<keep-as3-metadata>
-			 <name>Event</name>
-			 <name>Parameter</name>
 			 <name>PluginInfo</name>
+			 <name>Parameter</name>
+			 <name>Event</name>
 		</keep-as3-metadata>
 
 		<!-- Turn on generation of accessible SWFs. -->

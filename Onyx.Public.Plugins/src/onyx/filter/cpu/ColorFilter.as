@@ -96,13 +96,9 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(surface:IDisplaySurface):void {
+		public function render(context:IDisplayContextCPU):void {
 			
-			if (invalid) {
-				validate();
-			}
-			
-			surface.applyFilter(surface.nativeSurface, surface.rect, CONST_IDENTITY, matrix.filter);
+			context.applyFilter(matrix.filter);
 		}
 	}
 }

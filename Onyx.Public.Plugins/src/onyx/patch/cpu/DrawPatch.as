@@ -14,7 +14,7 @@ package onyx.patch.cpu {
 	use namespace parameter;
 	
 	[Parameter(type='color',	id='color',			target='color')]
-	[Parameter(type='number',	id='alpha',			target='alpha')]
+	[Parameter(type='number',	id='lineAlpha',		target='lineAlpha')]
 	[Parameter(type='number',	id='thickness',		target='thickness', clamp='1,100')]
 	[Parameter(type='function',	id='clear',			target='clear')]
 	
@@ -28,7 +28,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@private
 		 */
-		parameter var alpha:Number			= 1.0;
+		parameter var lineAlpha:Number			= 1.0;
 		
 		/**
 		 * 	@private
@@ -54,7 +54,7 @@ package onyx.patch.cpu {
 		 * 	@public
 		 */
 		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
-			
+
 			// set our size to the context size
 			dimensions.width 		= context.width;
 			dimensions.height		= context.height;
@@ -63,8 +63,8 @@ package onyx.patch.cpu {
 			// buffer					= new BitmapData(context.width, context.height, true, 0x00);
 			
 			// add a listener for mouse down
-			context.addEventListener(InteractionEvent.MOUSE_DOWN, 	handleInteraction);
-			context.addEventListener(InteractionEvent.RIGHT_CLICK,	handleInteraction);
+			context.display.addEventListener(InteractionEvent.MOUSE_DOWN, 	handleInteraction);
+			context.display.addEventListener(InteractionEvent.RIGHT_CLICK,	handleInteraction);
 			
 			// success
 			return super.initialize(context, path, content);
@@ -98,8 +98,8 @@ package onyx.patch.cpu {
 					break;
 				case InteractionEvent.MOUSE_DOWN:
 					
-					context.addEventListener(InteractionEvent.MOUSE_MOVE, 		handleInteraction);
-					context.addEventListener(InteractionEvent.MOUSE_UP,			handleInteraction);
+					context.display.addEventListener(InteractionEvent.MOUSE_MOVE, 		handleInteraction);
+					context.display.addEventListener(InteractionEvent.MOUSE_UP,			handleInteraction);
 					
 					// move graphics
 					graphics.moveTo(e.x, e.y );
@@ -113,8 +113,8 @@ package onyx.patch.cpu {
 					break;
 				case InteractionEvent.MOUSE_UP:
 					
-					context.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
-					context.removeEventListener(InteractionEvent.MOUSE_UP,		handleInteraction);
+					context.display.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
+					context.display.removeEventListener(InteractionEvent.MOUSE_UP,		handleInteraction);
 					
 					break;
 			}
@@ -149,21 +149,10 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(surface:IDisplaySurface):Boolean {
+		override public function render(context:IDisplayContextCPU):Boolean {
 			
-			// invalid?
-			if (invalid) {
-				
-				// validate the everything
-				validate();
-
-			}
-			
-			// draw this!
-			surface.fillRect(surface.rect, 0x00);
-			
-			// draw
-			surface.draw(shape, null, null, null, null, true);
+			context.clear();
+			context.draw(shape);
 			
 			// return
 			return true;

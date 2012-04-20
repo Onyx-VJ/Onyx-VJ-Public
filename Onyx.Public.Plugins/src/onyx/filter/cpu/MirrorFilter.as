@@ -106,18 +106,11 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(surface:IDisplaySurface):void {
+		public function render(context:IDisplayContextCPU):void {
 			
-			if (invalid) {
-				validate();
-			}
-			
-//			var buffer:IBitmapDrawable = surface.nativeSurface.clone();
-//			surface.fillRect(surface.rect, 0);
-//			surface.draw(buffer, null, new ColorTransform(1,1,1,.4));
-			
-			// draw
-			surface.draw(surface.nativeSurface, matrix, null, null, clipRect);
+			// draw itself
+			context.draw(context.nativeSurface, matrix, null, null, clipRect);
+
 		}
 	}
 }

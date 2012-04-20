@@ -21,6 +21,7 @@ package onyx.filter.cpu {
 	[Parameter(type='blendMode',	id='blendMode',	target='blendMode')]
 	[Parameter(type='number',		id='blurX', 	target='filter/blurX', clamp='0,40')]
 	[Parameter(type='number',		id='blurY', 	target='filter/blurY', clamp='0,40')]
+	
 	public final class HaloFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
@@ -71,12 +72,10 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(source:IDisplaySurface):void {
-			buffer.fillRect(source.rect, 0);
-			buffer.applyFilter(source.nativeSurface, source.rect, CONST_IDENTITY, filter);
-			blend.render(source, buffer);
-			
-//			source.fillRect(source.rect
+		public function render(context:IDisplayContextCPU):void {
+			buffer.clear();
+			buffer.applyFilter(context.nativeSurface, context.rect, CONST_IDENTITY, filter);
+			blend.render(context, buffer);
 		}
 	}
 }

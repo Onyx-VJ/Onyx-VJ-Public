@@ -92,17 +92,12 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(surface:IDisplaySurface):void {
-			
-			if (invalid) {
-				validate();
-			}
+		public function render(context:IDisplayContextCPU):void {
 			
 			var position:int		= Math.random() * rect.width;
-			var bitmap:BitmapData	= surface.nativeSurface;
 			
-			blendMode.render(surface, new DisplaySurfaceProxy(buffer), colorTransform, new Matrix(1,0,0,1, -rect.width + position), new Rectangle(0,0,position,rect.height));
-			blendMode.render(surface, new DisplaySurfaceProxy(buffer), colorTransform, new Matrix(1,0,0,1, position), new Rectangle(position,0,rect.width - position,rect.height));
+			blendMode.render(context, new DisplaySurfaceProxy(buffer), colorTransform, new Matrix(1,0,0,1, -rect.width + position), new Rectangle(0,0,position,rect.height));
+			blendMode.render(context, new DisplaySurfaceProxy(buffer), colorTransform, new Matrix(1,0,0,1, position), new Rectangle(position,0,rect.width - position,rect.height));
 
 		}
 	}

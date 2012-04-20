@@ -74,15 +74,10 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(surface:IDisplaySurface):void {
-			
-			if (invalid) {
-				validate();
-			}
+		public function render(context:IDisplayContextCPU):void {
 			
 			if (amount !== 1) {
-				var bitmap:BitmapData = surface.nativeSurface;
-				bitmap.paletteMap(bitmap, bitmap.rect, CONST_IDENTITY, RLUT, GLUT, BLUT, null);
+				context.paletteMap(RLUT, GLUT, BLUT);
 			}
 		}
 	}

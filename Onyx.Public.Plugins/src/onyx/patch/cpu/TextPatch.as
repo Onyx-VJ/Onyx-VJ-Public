@@ -72,18 +72,10 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(surface:IDisplaySurface):Boolean {
+		override public function render(context:IDisplayContextCPU):Boolean {
 			
-			// invalid?
-			if (invalid) {
-				
-				// validate the everything
-				validate();
-
-			}
-			
-			surface.fillRect(surface.rect, 0x00);
-			surface.draw(label, null, null, null, null, true);
+			context.clear();
+			context.draw(label);
 			
 			// return
 			return true;

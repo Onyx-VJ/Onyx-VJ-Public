@@ -199,16 +199,13 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(surface:IDisplaySurface):Boolean {
-			if (video) {
-				
-				if (invalid) {
-					validate();
-				}
+		override public function render(context:IDisplayContextCPU):Boolean {
 
-				surface.fillRect(surface.rect, 0);
+			if (video) {
+
+				context.clear();
 				try {
-					surface.draw(video, renderMatrix, null, null, null, contentTransform.smoothing);
+					context.draw(video, renderMatrix, null, null, null, contentTransform.smoothing);
 				} catch (e:Error) {
 					Console.Log(Console.ERROR, e.message);
 				}
