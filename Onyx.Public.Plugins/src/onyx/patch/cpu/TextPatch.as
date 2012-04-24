@@ -36,8 +36,8 @@ package onyx.patch.cpu {
 		 */
 		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
 			
-			dimensions.width 	= context.width;
-			dimensions.height	= context.height;
+			dimensions.width 		= context.width;
+			dimensions.height		= context.height;
 			
 			label.autoSize			= TextFieldAutoSize.LEFT;
 			label.antiAliasType		= AntiAliasType.ADVANCED;
@@ -72,7 +72,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU):Boolean {
+		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
 			
 			context.clear();
 			context.draw(label);

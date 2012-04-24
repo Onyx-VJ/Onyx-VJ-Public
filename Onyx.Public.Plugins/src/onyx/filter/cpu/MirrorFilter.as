@@ -108,8 +108,9 @@ package onyx.filter.cpu {
 		 */
 		public function render(context:IDisplayContextCPU):void {
 			
-			// draw itself
-			context.draw(context.nativeSurface, matrix, null, null, clipRect);
+			// copy itself
+			context.copyPixels(context.surface);
+			context.draw(context.surface, matrix, null, null, clipRect);
 
 		}
 	}

@@ -20,6 +20,11 @@ package onyx.patch.cpu {
 		/**
 		 * 	@private
 		 */
+		parameter const contentTransform:ContentTransform		= new ContentTransform();
+		
+		/**
+		 * 	@private
+		 */
 		parameter var color:uint;
 
 		/**
@@ -47,7 +52,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU):Boolean {
+		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
 			
 			// clear!
 			context.clear(0xFF << 24 | color);

@@ -63,8 +63,8 @@ package onyx.patch.cpu {
 			// buffer					= new BitmapData(context.width, context.height, true, 0x00);
 			
 			// add a listener for mouse down
-			context.display.addEventListener(InteractionEvent.MOUSE_DOWN, 	handleInteraction);
-			context.display.addEventListener(InteractionEvent.RIGHT_CLICK,	handleInteraction);
+			context.addEventListener(InteractionEvent.MOUSE_DOWN, 	handleInteraction);
+			context.addEventListener(InteractionEvent.RIGHT_CLICK,	handleInteraction);
 			
 			// success
 			return super.initialize(context, path, content);
@@ -98,8 +98,8 @@ package onyx.patch.cpu {
 					break;
 				case InteractionEvent.MOUSE_DOWN:
 					
-					context.display.addEventListener(InteractionEvent.MOUSE_MOVE, 		handleInteraction);
-					context.display.addEventListener(InteractionEvent.MOUSE_UP,			handleInteraction);
+					context.addEventListener(InteractionEvent.MOUSE_MOVE, 		handleInteraction);
+					context.addEventListener(InteractionEvent.MOUSE_UP,			handleInteraction);
 					
 					// move graphics
 					graphics.moveTo(e.x, e.y );
@@ -113,8 +113,8 @@ package onyx.patch.cpu {
 					break;
 				case InteractionEvent.MOUSE_UP:
 					
-					context.display.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
-					context.display.removeEventListener(InteractionEvent.MOUSE_UP,		handleInteraction);
+					context.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
+					context.removeEventListener(InteractionEvent.MOUSE_UP,		handleInteraction);
 					
 					break;
 			}
@@ -149,7 +149,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU):Boolean {
+		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
 			
 			context.clear();
 			context.draw(shape);

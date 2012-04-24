@@ -37,7 +37,7 @@ package onyx.filter.cpu {
 		/**
 		 * 	@private
 		 */
-		private var buffer:DisplaySurface;//		= new BitmapData();
+		private var buffer:DisplaySurface;
 		
 		/**
 		 * 	@public
@@ -74,8 +74,8 @@ package onyx.filter.cpu {
 		 */
 		public function render(context:IDisplayContextCPU):void {
 			buffer.clear();
-			buffer.applyFilter(context.nativeSurface, context.rect, CONST_IDENTITY, filter);
-			blend.render(context, buffer);
+			buffer.applyFilter(context.surface, context.rect, CONST_IDENTITY, filter);
+			blend.render(context, context.surface, buffer);
 		}
 	}
 }

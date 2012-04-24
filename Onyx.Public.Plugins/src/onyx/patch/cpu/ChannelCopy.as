@@ -83,7 +83,7 @@ package onyx.patch.cpu {
 		 */
 		private function handleRender(event:OnyxEvent):void {
 			
-			var target:BitmapData = listenChannel.getSurface().nativeSurface;
+			var target:BitmapData = listenChannel.surface;
 			buffer.copyPixels(target, target.rect, CONST_IDENTITY);
 			
 			updated = true;
@@ -99,7 +99,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU):Boolean {
+		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
 			
 			if (updated) {
 				

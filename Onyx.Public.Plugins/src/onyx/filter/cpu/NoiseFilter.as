@@ -4,7 +4,7 @@ package onyx.filter.cpu {
 	import flash.geom.*;
 	
 	import onyx.core.*;
-	import onyx.display.DisplaySurfaceProxy;
+	import onyx.display.*;
 	import onyx.parameter.IParameter;
 	import onyx.plugin.*;
 	import onyx.util.*;
@@ -43,7 +43,7 @@ package onyx.filter.cpu {
 		/**
 		 * 	@private
 		 */
-		private var buffer:BitmapData;
+		private var buffer:DisplaySurface;
 		
 		/**
 		 * 	@private
@@ -56,7 +56,7 @@ package onyx.filter.cpu {
 		public function initialize(context:IDisplayContextCPU):PluginStatus {
 			
 			this.context	= context;
-			this.buffer		= new BitmapData(context.width, context.height, false, 0);
+			this.buffer		= new DisplaySurface(context.width, context.height, false, 0);
 			this.rect		= context.rect;
 			
 			return PluginStatus.OK;
@@ -96,8 +96,8 @@ package onyx.filter.cpu {
 			
 			var position:int		= Math.random() * rect.width;
 			
-			blendMode.render(context, new DisplaySurfaceProxy(buffer), colorTransform, new Matrix(1,0,0,1, -rect.width + position), new Rectangle(0,0,position,rect.height));
-			blendMode.render(context, new DisplaySurfaceProxy(buffer), colorTransform, new Matrix(1,0,0,1, position), new Rectangle(position,0,rect.width - position,rect.height));
+			blendMode.render(context, context.surface, buffer, colorTransform, new Matrix(1,0,0,1, -rect.width + position), new Rectangle(0,0,position,rect.height));
+			blendMode.render(context, context.surface, buffer, colorTransform, new Matrix(1,0,0,1, position), new Rectangle(position,0,rect.width - position,rect.height));
 
 		}
 	}

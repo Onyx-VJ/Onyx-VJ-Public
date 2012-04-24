@@ -199,7 +199,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU):Boolean {
+		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
 
 			if (video) {
 

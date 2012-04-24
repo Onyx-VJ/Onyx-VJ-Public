@@ -5,6 +5,7 @@ package onyx.filter.cpu {
 	
 	import onyx.core.*;
 	import onyx.plugin.*;
+	import onyx.display.*;
 	
 	use namespace parameter;
 	
@@ -28,7 +29,7 @@ package onyx.filter.cpu {
 		/**
 		 * 	@private
 		 */
-		private var buffer:BitmapData;
+		private var buffer:DisplaySurface;
 		
 		/**
 		 * 	@private
@@ -56,7 +57,7 @@ package onyx.filter.cpu {
 			var square:int		= amount * amount;
 			
 			matrix				= new Matrix(1 / amount, 0, 0, 1 / amount);
-			buffer				= new BitmapData(matrix.a * context.width, matrix.d * context.height, true, 0x00);
+			buffer				= new DisplaySurface(matrix.a * context.width, matrix.d * context.height, true, 0x00);
 			
 			super.validate();
 		}
@@ -66,7 +67,8 @@ package onyx.filter.cpu {
 		 */
 		public function render(context:IDisplayContextCPU):void {
 
-			buffer.draw(context.nativeSurface, matrix);
+			// draw
+			buffer.draw(context.surface, matrix);
 			
 			var square:int			= amount * amount;
 			var segmentX:Number		= context.width / amount;
@@ -77,7 +79,7 @@ package onyx.filter.cpu {
 			for (var count:int = 0; count < square; ++count) {
 				POINT.x = (count % amount) * segmentX;
 				POINT.y = int(count / amount) * segmentY;
-				context.copyPixels(buffer, buffer.rect, POINT);
+				context.copyPixels(buffer, false, buffer.rect, POINT);
 			}
 		}
 	}
