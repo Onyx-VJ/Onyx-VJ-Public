@@ -15,7 +15,7 @@ package onyx.patch.cpu {
 	
 	[Parameter(type='color', id='color', target='color')]
 	
-	final public class SolidColorGenerator extends PluginPatch {
+	final public class SolidColorGenerator extends PluginPatchCPU {
 		
 		/**
 		 * 	@private
@@ -30,7 +30,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
 			
 			// set our size to the context size
 			dimensions.width 		= context.width;
@@ -52,7 +52,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
+		override public function render(context:IDisplayContextCPU):Boolean {
 			
 			// clear!
 			context.clear(0xFF << 24 | color);

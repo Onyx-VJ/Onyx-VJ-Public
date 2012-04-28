@@ -4,15 +4,15 @@ package onyx.filter.cpu {
 	import flash.geom.*;
 	
 	import onyx.core.*;
-	import onyx.plugin.*;
 	import onyx.display.*;
+	import onyx.plugin.*;
 	
 	use namespace parameter;
 	
 	[PluginInfo(
 		id			= 'Onyx.Filter.CPU.Repeater',
 		name		= 'Filter::Repeat',
-		depends		= 'Onyx.Display.CPU',
+		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
 	)]
@@ -40,12 +40,20 @@ package onyx.filter.cpu {
 		 * 	@private
 		 */
 		parameter var amount:int			= 2;
+		
+		/**
+		 * 	@private
+		 */
+		private var rect:Rectangle;
 
 		/**
 		 * 	@public
 		 */
-		public function initialize(context:IDisplayContextCPU):PluginStatus {
+		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
+			
+			this.owner		= owner;
 			this.context	= context;
+			
 			return PluginStatus.OK;
 		}
 		
@@ -58,6 +66,7 @@ package onyx.filter.cpu {
 			
 			matrix				= new Matrix(1 / amount, 0, 0, 1 / amount);
 			buffer				= new DisplaySurface(matrix.a * context.width, matrix.d * context.height, true, 0x00);
+			rect				= buffer.rect;
 			
 			super.validate();
 		}
@@ -65,22 +74,26 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(context:IDisplayContextCPU):void {
+		public function render(context:IDisplayContextCPU):Boolean {
 
-			// draw
+			// copy the previous into our buffer
+			buffer.fillRect(rect, 0x00);
 			buffer.draw(context.surface, matrix);
 			
 			var square:int			= amount * amount;
 			var segmentX:Number		= context.width / amount;
 			var segmentY:Number		= context.height / amount;
 			
+			// make sure we wipe everything -- as items may have alpha
 			context.clear();
 			
 			for (var count:int = 0; count < square; ++count) {
 				POINT.x = (count % amount) * segmentX;
 				POINT.y = int(count / amount) * segmentY;
-				context.copyPixels(buffer, false, buffer.rect, POINT);
+				context.copyPixels(buffer, false, rect, POINT);
 			}
+			
+			return true;
 		}
 	}
 }

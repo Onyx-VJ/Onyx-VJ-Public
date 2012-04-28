@@ -3,6 +3,7 @@ package onyx.filter.cpu {
 	import com.quasimondo.geom.ColorMatrix;
 	
 	import flash.display.*;
+	import flash.filters.ColorMatrixFilter;
 	import flash.geom.*;
 	
 	import onyx.core.*;
@@ -13,9 +14,9 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Filter.CPU.ColorFilter',
+		id			= 'Onyx.Display.Filter.ColorFilter::CPU',
 		name		= 'Color::Adjust',
-		depends		= 'Onyx.Display.CPU',
+		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
 	)]
@@ -28,6 +29,7 @@ package onyx.filter.cpu {
 	
 		
 	public final class ColorFilter extends PluginFilterCPU implements IPluginFilterCPU {
+		
 		/**
 		 * 	@private
 		 */
@@ -64,10 +66,16 @@ package onyx.filter.cpu {
 		parameter var threshold:Number		= 0.0;
 		
 		/**
+		 * 	@private	
+		 */
+		parameter var filter:ColorMatrixFilter;
+		
+		/**
 		 * 	@public
 		 */
-		public function initialize(channel:IDisplayContextCPU):PluginStatus {
+		public function initialize(owner:IChannelCPU, channel:IDisplayContextCPU):PluginStatus {
 			this.context	= channel;
+			this.owner		= owner;
 			return PluginStatus.OK;
 		}
 		
@@ -75,6 +83,11 @@ package onyx.filter.cpu {
 		 * 	@public
 		 */
 		override public function validate():void {
+			
+			if (threshold === 0 && hue === 0 && contrast === 0 && brightness === 0 && saturation === 1) {
+				filter = null;
+				return super.validate();
+			}
 			
 			matrix.reset();
 			if (threshold !== 0) {
@@ -88,6 +101,9 @@ package onyx.filter.cpu {
 			matrix.adjustContrast(contrast);
 			matrix.adjustBrightness(brightness * 255);
 			
+			// store the filter
+			filter = matrix.filter;
+			
 			// we're done
 			super.validate();
 			
@@ -96,9 +112,16 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(context:IDisplayContextCPU):void {
+		public function render(context:IDisplayContextCPU):Boolean {
 			
-			context.applyFilter(matrix.filter);
+			// run!
+			if (filter) {
+				context.applyFilter(matrix.filter, context.surface);
+				return true;
+			}
+			
+			// return false, buffers aren't going to get switched
+			return false;
 		}
 	}
 }

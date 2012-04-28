@@ -13,19 +13,19 @@ package onyx.patch.cpu {
 	
 	use namespace parameter;
 	
-	[Parameter(type='channel',	id='channel',		target='channel')]
+	[Parameter(type='channelCPU',	id='channel', target='channel')]
 	
-	final public class ChannelCopy extends PluginPatch {
+	final public class ChannelCopy extends PluginPatchCPU {
 		
 		/**
 		 * 	@private
 		 */
-		parameter var channel:IDisplayChannel;
+		parameter var channel:IChannel;
 		
 		/**
 		 * 	@private
 		 */
-		private var listenChannel:IDisplayChannelCPU;
+		private var listenChannel:IChannelCPU;
 		
 		/**
 		 * 	@private
@@ -40,7 +40,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
 			
 			// set our size to the context size
 			dimensions.width 		= context.width;
@@ -65,7 +65,7 @@ package onyx.patch.cpu {
 					listenChannel.removeEventListener(OnyxEvent.CHANNEL_RENDER, handleRender);	
 				}
 				
-				listenChannel = channel as IDisplayChannelCPU;
+				listenChannel = channel as IChannelCPU;
 				if (listenChannel) {
 					listenChannel.addEventListener(OnyxEvent.CHANNEL_RENDER, handleRender);	
 				}
@@ -99,12 +99,10 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
+		override public function render(context:IDisplayContextCPU):Boolean {
 			
 			if (updated) {
-				
 				updated = false;
-				
 				context.copyPixels(buffer);
 				return true;
 			}

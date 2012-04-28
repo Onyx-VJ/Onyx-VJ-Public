@@ -13,9 +13,9 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Filter.CPU.Gamma',
+		id			= 'Onyx.Filter.Filter.Gamma::CPU',
 		name		= 'Color::Gamma',
-		depends		= 'Onyx.Display.CPU',
+		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
 	)]
@@ -48,8 +48,9 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function initialize(context:IDisplayContextCPU):PluginStatus {
+		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
 			this.context	= context;
+			this.owner		= owner;
 			return PluginStatus.OK;
 		}
 		
@@ -74,11 +75,14 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(context:IDisplayContextCPU):void {
+		public function render(context:IDisplayContextCPU):Boolean {
 			
 			if (amount !== 1) {
-				context.paletteMap(RLUT, GLUT, BLUT);
+				context.paletteMap(RLUT, GLUT, BLUT, null, context.surface);
+				return true;
 			}
+			
+			return false;
 		}
 	}
 }

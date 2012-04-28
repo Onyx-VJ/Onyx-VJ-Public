@@ -18,18 +18,7 @@ package onyx.patch.cpu {
 	[Parameter(type='text',		id='streamName',	target='streamName')]
 	[Parameter(type='function',	id='connect',		target='connect')]
 	
-	[Parameter(id='scale',		target='contentTransform/matrix',		type='matrix/scale')]
-	[Parameter(id='translate',	target='contentTransform/matrix',		type='matrix/translate')]
-	[Parameter(id='rotation',	target='contentTransform/rotation',		type='number',				clamp='-1,1',		reset='0',	loop='true')]
-	[Parameter(id='anchor',		target='contentTransform/anchor',		type='point',				clamp='0,1',		reset='0.5,0.5')]
-	[Parameter(id='smoothing',	target='contentTransform/smoothing',	type='boolean')]
-
-	final public class RTMPatch extends PluginPatch {
-		
-		/**
-		 * 	@private
-		 */
-		parameter const contentTransform:ContentTransform		= new ContentTransform();
+	final public class RTMPatch extends PluginPatchTransformCPU {
 		
 		/**
 		 * 	@parameter
@@ -58,14 +47,9 @@ package onyx.patch.cpu {
 		private var video:Video;
 		
 		/**
-		 * 	@private
-		 */
-		private var renderMatrix:Matrix;
-		
-		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
 			
 			// set to the same size as the blah blah
 			dimensions.width	= context.width;
@@ -147,12 +131,18 @@ package onyx.patch.cpu {
 			dimensions.width 	= info.width;
 			dimensions.height	= info.height;
 			
-			contentTransform.initialize(context, dimensions);
-			
 			video	= new Video(info.width, info.height);
-			// video.deblocking = 1;
 			video.attachNetStream(stream);
+
+			// invalidate something
+			invalid					= true;
+			invalidParameters.scale	= getParameter('scale');
 			
+			// re-validate the size
+			trace('matrix', renderMatrix);
+			validate();
+			trace('matrix', renderMatrix);
+
 		}
 		
 		/**
@@ -172,40 +162,12 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
-			
-			var updateMatrix:Boolean;
-			
-			// do we have invalid parameters?
-			for (var i:String in invalidParameters) {
-				
-				// re-update our matrix
-				switch (i) {
-					case 'rotation':
-					case 'scale':
-					case 'translate':
-						updateMatrix	= true;
-						break;
-				}
-			}
-			
-			if (updateMatrix) {
-				renderMatrix	= contentTransform.update(dimensions);
-			}
-			
-			return super.validate();
-		}
-		
-		/**
-		 * 	@public
-		 */
-		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
+		override public function render(context:IDisplayContextCPU):Boolean {
 
 			if (video) {
-
 				context.clear();
 				try {
-					context.draw(video, renderMatrix, null, null, null, contentTransform.smoothing);
+					context.draw(video, renderMatrix, null, null, null, smoothing);
 				} catch (e:Error) {
 					Console.Log(Console.ERROR, e.message);
 				}

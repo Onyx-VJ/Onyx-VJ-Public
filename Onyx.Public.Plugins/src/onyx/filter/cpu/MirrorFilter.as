@@ -13,7 +13,7 @@ package onyx.filter.cpu {
 	[PluginInfo(
 		id			= 'Onyx.Filter.CPU.Mirror',
 		name		= 'Filter::Mirror',
-		depends		= 'Onyx.Display.CPU,Onyx.Display.CPU.Blend.Overlay',
+		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
 	)]
@@ -46,15 +46,21 @@ package onyx.filter.cpu {
 		/**
 		 * 	@private
 		 */
+		private var copyRect:Rectangle;
+		
+		/**
+		 * 	@private
+		 */
 		private var matrix:Matrix;
 		
 		/**
 		 * 	@public
 		 */
-		public function initialize(context:IDisplayContextCPU):PluginStatus {
+		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
 			
 			// context
 			this.context	= context;
+			this.owner		= owner;
 			
 			// return ok
 			return PluginStatus.OK;
@@ -106,12 +112,17 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(context:IDisplayContextCPU):void {
+		public function render(context:IDisplayContextCPU):Boolean {
 			
-			// copy itself
+			// copy itself, since target !== surface
+			// TODO: Optimize this, since we have a smaller rectangle to copy (don't have to copy the whole thing
 			context.copyPixels(context.surface);
+			
+			// now we're going to re-draw the surface again
 			context.draw(context.surface, matrix, null, null, clipRect);
 
+			// return true -- we've rendered something, so we need swap the buffers eh?
+			return true;
 		}
 	}
 }

@@ -13,17 +13,23 @@ package onyx.patch.cpu {
 	
 	use namespace parameter;
 	
-	[Parameter(type='color',	id='color',			target='color')]
-	[Parameter(type='number',	id='lineAlpha',		target='lineAlpha')]
-	[Parameter(type='number',	id='thickness',		target='thickness', clamp='1,100')]
-	[Parameter(type='function',	id='clear',			target='clear')]
+	[Parameter(type='color',		id='color',			target='color')]
+	[Parameter(type='number',		id='lineAlpha',		target='lineAlpha')]
+	[Parameter(type='number',		id='thickness',		target='thickness', clamp='1,100')]
+	[Parameter(type='function',		id='clear',			target='clear')]
+	[Parameter(target='quality',	id='quality',		type='stageQuality',	name='quality', reset='8x8')]	
 	
-	final public class DrawPatch extends PluginPatch {
+	final public class DrawPatch extends PluginPatchCPU {
+		
+		/**
+		 * 	@parameter
+		 */
+		parameter var quality:String			= StageQuality.HIGH_8X8;
 		
 		/**
 		 * 	@private
 		 */
-		parameter var color:uint			= 0xFFFFFF;
+		parameter var color:uint				= 0xFFFFFF;
 		
 		/**
 		 * 	@private
@@ -33,7 +39,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@private
 		 */
-		parameter var thickness:Number		= 5.0;
+		parameter var thickness:Number			= 5.0;
 		
 		/**
 		 * 	@private
@@ -53,14 +59,14 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
 
 			// set our size to the context size
 			dimensions.width 		= context.width;
 			dimensions.height		= context.height;
 			
 			// buffer!
-			// buffer					= new BitmapData(context.width, context.height, true, 0x00);
+			buffer					= new DisplaySurface(context.width, context.height, true, 0x00);
 			
 			// add a listener for mouse down
 			context.addEventListener(InteractionEvent.MOUSE_DOWN, 	handleInteraction);
@@ -80,6 +86,9 @@ package onyx.patch.cpu {
 			graphics.clear();
 			graphics.lineStyle(thickness, color, alpha);
 			
+			// clear!
+			buffer.fillRect(buffer.rect, 0x00);
+			
 			// set invalid to true, so that we'll redraw
 			invalid = true;
 		}
@@ -89,6 +98,8 @@ package onyx.patch.cpu {
 		 */
 		private function handleInteraction(e:InteractionEvent):void {
 			var graphics:Graphics	= shape.graphics;
+			
+			trace('xx', e);
 			
 			switch (e.type) {
 				case InteractionEvent.RIGHT_CLICK:
@@ -113,6 +124,13 @@ package onyx.patch.cpu {
 					break;
 				case InteractionEvent.MOUSE_UP:
 					
+					// draw the buffer
+					buffer.drawWithQuality(shape, null, null, null, null, true, StageQuality.HIGH_8X8);
+					
+					// clear
+					graphics.clear();
+					graphics.lineStyle(thickness, color, lineAlpha);
+					
 					context.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
 					context.removeEventListener(InteractionEvent.MOUSE_UP,		handleInteraction);
 					
@@ -131,7 +149,7 @@ package onyx.patch.cpu {
 			var graphics:Graphics	= shape.graphics;
 			
 			// set line style
-			graphics.lineStyle(thickness, color, alpha);
+			graphics.lineStyle(thickness, color, lineAlpha);
 			
 			// validate
 			super.validate();
@@ -149,10 +167,13 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
+		override public function render(context:IDisplayContextCPU):Boolean {
 			
-			context.clear();
-			context.draw(shape);
+			// this is the same as a clear pretty much
+			context.copyPixels(buffer);
+			
+			// draw the shape
+			context.draw(shape, null, null, null, null, true, StageQuality.HIGH_8X8);
 			
 			// return
 			return true;

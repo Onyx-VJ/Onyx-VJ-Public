@@ -14,7 +14,7 @@ package onyx.filter.cpu {
 	[PluginInfo(
 		id			= 'Onyx.Filter.CPU.Noise',
 		name		= 'Filter::Noise',
-		depends		= 'Onyx.Display.CPU',
+		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
 	)]
@@ -53,8 +53,9 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function initialize(context:IDisplayContextCPU):PluginStatus {
+		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
 			
+			this.owner		= owner;
 			this.context	= context;
 			this.buffer		= new DisplaySurface(context.width, context.height, false, 0);
 			this.rect		= context.rect;
@@ -92,13 +93,15 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(context:IDisplayContextCPU):void {
+		public function render(context:IDisplayContextCPU):Boolean {
 			
 			var position:int		= Math.random() * rect.width;
 			
+			// blend the first / second
 			blendMode.render(context, context.surface, buffer, colorTransform, new Matrix(1,0,0,1, -rect.width + position), new Rectangle(0,0,position,rect.height));
 			blendMode.render(context, context.surface, buffer, colorTransform, new Matrix(1,0,0,1, position), new Rectangle(position,0,rect.width - position,rect.height));
 
+			return true;
 		}
 	}
 }

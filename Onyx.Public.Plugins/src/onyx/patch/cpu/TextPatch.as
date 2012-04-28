@@ -19,7 +19,7 @@ package onyx.patch.cpu {
 	[Parameter(type='boolean',		id='embedFonts', 	target='label/embedFonts')]
 	[Parameter(type='text',			id='text', 			target='label/text')]
 
-	final public class TextPatch extends PluginPatch {
+	final public class TextPatch extends PluginPatchTransformCPU {
 		
 		/**
 		 * 	@private
@@ -34,7 +34,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContext, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
 			
 			dimensions.width 		= context.width;
 			dimensions.height		= context.height;
@@ -72,10 +72,10 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function render(context:IDisplayContextCPU, transform:IDisplayTransformCPU):Boolean {
+		override public function render(context:IDisplayContextCPU):Boolean {
 			
 			context.clear();
-			context.draw(label);
+			context.draw(label, renderMatrix, null, null, null, true, StageQuality.HIGH_8X8);
 			
 			// return
 			return true;
