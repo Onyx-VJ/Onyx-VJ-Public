@@ -76,7 +76,7 @@ package onyx.filter.cpu {
 		public function render(context:IDisplayContextCPU):Boolean {
 			
 			buffer.applyFilter(context.surface, context.rect, CONST_IDENTITY, filter);
-			blend.render(context, context.surface, buffer);
+			blend.render(context.target, context.surface, buffer);
 			
 			return true;
 		}

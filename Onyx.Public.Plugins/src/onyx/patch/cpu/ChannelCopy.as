@@ -40,7 +40,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, channel:IChannelCPU, path:IFileReference, content:Object):PluginStatus {
 			
 			// set our size to the context size
 			dimensions.width 		= context.width;
@@ -50,7 +50,7 @@ package onyx.patch.cpu {
 			buffer					= new DisplaySurface(context.width, context.height, true, 0x00);
 			
 			// success
-			return super.initialize(context, path, content);
+			return super.initialize(context, channel, path, content);
 		}
 		
 		/**

@@ -30,14 +30,14 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, channel:IChannelCPU, path:IFileReference, content:Object):PluginStatus {
 			
 			// set our size to the context size
 			dimensions.width 		= context.width;
 			dimensions.height		= context.height;
 			
 			// success
-			return super.initialize(context, path, content);
+			return super.initialize(context, channel, path, content);
 		}
 		
 		/**

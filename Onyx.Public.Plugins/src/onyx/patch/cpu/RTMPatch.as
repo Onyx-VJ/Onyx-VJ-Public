@@ -49,13 +49,13 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function initialize(context:IDisplayContextCPU, path:IFileReference, content:Object):PluginStatus {
+		override public function initialize(context:IDisplayContextCPU, channel:IChannelCPU, path:IFileReference, content:Object):PluginStatus {
 			
 			// set to the same size as the blah blah
 			dimensions.width	= context.width;
 			dimensions.height	= context.height;
 			
-			return super.initialize(context, path, content);
+			return super.initialize(context, channel, path, content);
 		}
 		
 		/**

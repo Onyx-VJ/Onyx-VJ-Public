@@ -1,6 +1,6 @@
 <report>
   <scripts>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginBlendCPU.as" mod="1335298309078" size="374" optimizedsize="354">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginBlendCPU.as" mod="1335629382825" size="374" optimizedsize="354">
       <def id="onyx.core:IPluginBlendCPU" />
       <pre id="onyx.core:IPluginBlend" />
       <pre id="Object" />
@@ -60,7 +60,7 @@
       <dep id="AS3" />
       <dep id="__AS3__.vec:Vector" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginPatchGPU.as" mod="1335578993800" size="2851" optimizedsize="2787">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginPatchGPU.as" mod="1335624054160" size="2938" optimizedsize="2874">
       <def id="onyx.plugin:PluginPatchGPU" />
       <pre id="onyx.core:IPluginGeneratorGPU" />
       <pre id="flash.display:Sprite" />
@@ -71,7 +71,9 @@
       <dep id="onyx.core:parameter" />
       <dep id="onyx.plugin:Plugin" />
       <dep id="onyx.display:Dimensions" />
+      <dep id="onyx.core:IChannel" />
       <dep id="onyx.plugin:PluginStatus" />
+      <dep id="onyx.core:IChannelGPU" />
       <dep id="onyx.core:IDisplayContext" />
       <dep id="onyx.parameter:Parameter" />
       <dep id="onyx.core:IPluginHost" />
@@ -84,7 +86,7 @@
       <dep id="onyx.event:ParameterEvent" />
       <dep id="onyx.core:onyx_ns" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IDisplayContextCPU.as" mod="1335298309076" size="595" optimizedsize="595">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IDisplayContextCPU.as" mod="1335629875371" size="674" optimizedsize="674">
       <def id="onyx.core:IDisplayContextCPU" />
       <pre id="onyx.core:IDisplayContext" />
       <pre id="Object" />
@@ -96,6 +98,7 @@
       <dep id="flash.geom:Matrix" />
       <dep id="onyx.display:DisplaySurface" />
       <dep id="flash.geom:ColorTransform" />
+      <dep id="onyx.core:IChannelCPU" />
       <dep id="flash.geom:Point" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginData.as" mod="1334959337226" size="1955" optimizedsize="1909">
@@ -106,12 +109,6 @@
       <dep id="avmplus:describeObject" />
       <dep id="flash.system:ApplicationDomain" />
       <dep id="Error" />
-    </script>
-    <script name="_c1291ac86fe9d16c14b0ed527f9f0d2b3d27962804ef05792eadd1678871234b_flash_display_Sprite.as" mod="1335619036955" size="601" optimizedsize="562">
-      <def id="_c1291ac86fe9d16c14b0ed527f9f0d2b3d27962804ef05792eadd1678871234b_flash_display_Sprite" />
-      <pre id="flash.display:Sprite" />
-      <dep id="flash.system:Security" />
-      <dep id="AS3" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\util\easing\Back.as" mod="1323805175969" size="511" optimizedsize="500">
       <def id="onyx.util.easing:Back" />
@@ -129,6 +126,12 @@
       <pre id="Object" />
       <dep id="AS3" />
       <dep id="flash.utils:Dictionary" />
+    </script>
+    <script name="_d9662ecaeca23e1fcb2ed2c22b1c62737e4dbdd820ec8e65e11df79415694c8f_flash_display_Sprite.as" mod="1335631639775" size="601" optimizedsize="562">
+      <def id="_d9662ecaeca23e1fcb2ed2c22b1c62737e4dbdd820ec8e65e11df79415694c8f_flash_display_Sprite" />
+      <pre id="flash.display:Sprite" />
+      <dep id="flash.system:Security" />
+      <dep id="AS3" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IFileStream.as" mod="1334084260359" size="548" optimizedsize="331">
       <def id="onyx.core:IFileStream" />
@@ -158,12 +161,13 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\display\DisplaySurface.as" mod="1335372516346" size="591" optimizedsize="575">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\display\DisplaySurface.as" mod="1335629769689" size="674" optimizedsize="654">
       <def id="onyx.display:DisplaySurface" />
       <pre id="flash.display:BitmapData" />
       <dep id="AS3" />
       <dep id="flash.geom:Rectangle" />
       <dep id="onyx.display:CONST_IDENTITY" />
+      <dep id="flash.geom:Point" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\util\SimpleCache.as" mod="1323805175965" size="474" optimizedsize="468">
       <def id="onyx.util:SimpleCache" />
@@ -305,42 +309,20 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginGenerator.as" mod="1335578993772" size="309" optimizedsize="309">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginGenerator.as" mod="1335623755895" size="346" optimizedsize="346">
       <def id="onyx.core:IPluginGenerator" />
       <pre id="onyx.core:IPlugin" />
       <pre id="Object" />
       <dep id="AS3" />
       <dep id="onyx.core:IFileReference" />
       <dep id="onyx.display:Dimensions" />
+      <dep id="onyx.core:IChannel" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginFactory.as" mod="1335481388264" size="221" optimizedsize="221">
       <def id="onyx.core:IPluginFactory" />
       <pre id="Object" />
       <dep id="onyx.core:IPlugin" />
       <dep id="AS3" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginPatch.as" mod="1335578993778" size="2823" optimizedsize="2762">
-      <def id="onyx.plugin:PluginPatch" />
-      <pre id="onyx.core:IPluginGeneratorCPU" />
-      <pre id="flash.display:Sprite" />
-      <dep id="onyx.parameter:ParameterList" />
-      <dep id="onyx.core:IDisplayContextCPU" />
-      <dep id="onyx.core:IFileReference" />
-      <dep id="onyx.core:Onyx" />
-      <dep id="onyx.core:parameter" />
-      <dep id="onyx.plugin:Plugin" />
-      <dep id="onyx.display:Dimensions" />
-      <dep id="onyx.plugin:PluginStatus" />
-      <dep id="onyx.parameter:Parameter" />
-      <dep id="onyx.core:IPluginHost" />
-      <dep id="onyx.core:IPluginDefinition" />
-      <dep id="AS3" />
-      <dep id="__AS3__.vec:Vector" />
-      <dep id="flash.geom:Matrix" />
-      <dep id="onyx.parameter:IParameter" />
-      <dep id="onyx.parameter:IParameterObject" />
-      <dep id="onyx.event:ParameterEvent" />
-      <dep id="onyx.core:onyx_ns" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginModuleInterface.as" mod="1333571125783" size="414" optimizedsize="414">
       <def id="onyx.core:IPluginModuleInterface" />
@@ -499,13 +481,25 @@
       <pre id="flash.events:Event" />
       <dep id="AS3" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginGeneratorCPU.as" mod="1335578993772" size="300" optimizedsize="300">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\core\IPluginGeneratorCPU.as" mod="1335623935559" size="316" optimizedsize="316">
       <def id="onyx.core:IPluginGeneratorCPU" />
       <pre id="onyx.core:IPluginGenerator" />
       <pre id="Object" />
       <dep id="onyx.core:IDisplayContextCPU" />
       <dep id="AS3" />
       <dep id="onyx.core:IFileReference" />
+      <dep id="onyx.core:IChannelCPU" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginGeneratorCPU.as" mod="1335624540968" size="571" optimizedsize="555">
+      <def id="onyx.plugin:PluginGeneratorCPU" />
+      <pre id="onyx.plugin:PluginGenerator" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="AS3" />
+      <dep id="onyx.core:IFileReference" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.core:IChannelCPU" />
+      <dep id="onyx.core:IChannel" />
       <dep id="onyx.plugin:PluginStatus" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\util\encoding\Base64.as" mod="1323805175975" size="2038" optimizedsize="1942">
@@ -526,7 +520,7 @@
       <dep id="AS3" />
       <dep id="onyx.display:DisplaySurface" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginGenerator.as" mod="1335578993777" size="882" optimizedsize="846">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginGenerator.as" mod="1335624106919" size="890" optimizedsize="854">
       <def id="onyx.plugin:PluginGenerator" />
       <pre id="onyx.plugin:PluginBase" />
       <dep id="AS3" />
@@ -837,7 +831,7 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginPatchCPU.as" mod="1335578993779" size="2839" optimizedsize="2775">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginPatchCPU.as" mod="1335628580696" size="2894" optimizedsize="2830">
       <def id="onyx.plugin:PluginPatchCPU" />
       <pre id="onyx.core:IPluginGeneratorCPU" />
       <pre id="flash.display:Sprite" />
@@ -847,7 +841,9 @@
       <dep id="onyx.core:Onyx" />
       <dep id="onyx.core:parameter" />
       <dep id="onyx.plugin:Plugin" />
+      <dep id="onyx.core:IChannelCPU" />
       <dep id="onyx.display:Dimensions" />
+      <dep id="onyx.core:IChannel" />
       <dep id="onyx.plugin:PluginStatus" />
       <dep id="onyx.parameter:Parameter" />
       <dep id="onyx.core:IPluginHost" />
@@ -992,10 +988,9 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginGeneratorTransformCPU.as" mod="1335578993778" size="1236" optimizedsize="965">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Private\Onyx.Core.SDK\src\onyx\plugin\PluginGeneratorTransformCPU.as" mod="1335624344840" size="1274" optimizedsize="999">
       <def id="onyx.plugin:PluginGeneratorTransformCPU" />
-      <pre id="onyx.plugin:PluginGenerator" />
-      <dep id="onyx.core:IDisplayContextCPU" />
+      <pre id="onyx.plugin:PluginGeneratorCPU" />
       <dep id="AS3" />
       <dep id="onyx.display:ContentTransform" />
       <dep id="flash.geom:Matrix" />
