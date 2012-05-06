@@ -13,8 +13,8 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Filter.Filter.Gamma::CPU',
-		name		= 'Color::Gamma',
+		id			= 'Onyx.Filter.Gamma::CPU',
+		name		= 'CPU Color::Gamma',
 		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
@@ -22,7 +22,7 @@ package onyx.filter.cpu {
 	
 	[Parameter(type='number',		id='amount',	 	clamp='0,2',	reset='1')]
 	
-	public final class GammaFilter extends PluginFilterCPU implements IPluginFilterCPU {
+	public final class CPUGammaFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
 		 * 	@private

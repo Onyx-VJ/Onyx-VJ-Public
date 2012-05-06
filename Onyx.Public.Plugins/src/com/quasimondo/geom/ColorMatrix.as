@@ -308,8 +308,7 @@ package com.quasimondo.geom {
 		}
 		
 		
-		public function adjustHue( degrees:Number ):void
-		{
+		public function adjustHue( degrees:Number ):void {
 			degrees *= RAD;
 			var cos:Number = Math.cos(degrees);
 			var sin:Number = Math.sin(degrees);

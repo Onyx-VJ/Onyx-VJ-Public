@@ -10,8 +10,8 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Filter.CPU.Repeater',
-		name		= 'Filter::Repeat',
+		id			= 'Onyx.Filter.Repeater::CPU',
+		name		= 'CPU Style::Repeat',
 		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
@@ -19,7 +19,7 @@ package onyx.filter.cpu {
 	
 	[Parameter(type='number',	id='amount',	 	target='amount',		clamp='2,24', reset='2')]
 
-	public final class RepeaterFilter extends PluginFilterCPU implements IPluginFilterCPU {
+	public final class CPURepeaterFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
 		 * 	@private

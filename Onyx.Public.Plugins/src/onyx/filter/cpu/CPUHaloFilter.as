@@ -10,8 +10,8 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Filter.CPU.Halo',
-		name		= 'Filter::Halo',
+		id			= 'Onyx.Filter.Halo::CPU',
+		name		= 'CPU Style::Halo',
 		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
@@ -22,7 +22,7 @@ package onyx.filter.cpu {
 	[Parameter(type='integer',		id='blurX', 	target='filter/blurX', clamp='0,40')]
 	[Parameter(type='integer',		id='blurY', 	target='filter/blurY', clamp='0,40')]
 	
-	public final class HaloFilter extends PluginFilterCPU implements IPluginFilterCPU {
+	public final class CPUHaloFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
 		 * 	@parameter

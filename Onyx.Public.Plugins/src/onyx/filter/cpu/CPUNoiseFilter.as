@@ -12,8 +12,8 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Filter.CPU.Noise',
-		name		= 'Filter::Noise',
+		id			= 'Onyx.Filter.Noise::CPU',
+		name		= 'CPU Style::Noise',
 		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
@@ -23,7 +23,7 @@ package onyx.filter.cpu {
 	[Parameter(type='boolean',			id='greyScale',	 	 	target='greyScale')]
 	[Parameter(type='blendMode',		id='blendMode',	 	 	target='blendMode')]
 
-	public final class NoiseFilter extends PluginFilterCPU implements IPluginFilterCPU {
+	public final class CPUNoiseFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
 		 * 	@private
