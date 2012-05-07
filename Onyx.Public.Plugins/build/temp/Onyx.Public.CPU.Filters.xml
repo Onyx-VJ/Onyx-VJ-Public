@@ -1,6 +1,6 @@
 <report>
   <scripts>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\com\quasimondo\geom\ColorMatrix.as" mod="1334162564849" size="16979" optimizedsize="9731">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\com\quasimondo\geom\ColorMatrix.as" mod="1336337669952" size="16979" optimizedsize="9731">
       <def id="com.quasimondo.geom:ColorMatrix" />
       <pre id="Object" />
       <dep id="flash.display:BitmapData" />
@@ -10,8 +10,19 @@
       <dep id="flash.geom:Matrix3D" />
       <dep id="flash.geom:Point" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\GammaFilter.as" mod="1335565343105" size="1792" optimizedsize="1133">
-      <def id="onyx.filter.cpu:GammaFilter" />
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20123306173313.as" mod="1336339993470" size="800" optimizedsize="288">
+      <def id="OnyxPublicCPUFilters20123306173313" />
+      <pre id="flash.display:Sprite" />
+      <dep id="onyx.filter.cpu:CPUNoiseFilter" />
+      <dep id="onyx.filter.cpu:CPUMirrorFilter" />
+      <dep id="AS3" />
+      <dep id="onyx.filter.cpu:CPUColorFilter" />
+      <dep id="onyx.filter.cpu:CPUGammaFilter" />
+      <dep id="onyx.filter.cpu:CPUHaloFilter" />
+      <dep id="onyx.filter.cpu:CPURepeaterFilter" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUGammaFilter.as" mod="1336338039945" size="1816" optimizedsize="1139">
+      <def id="onyx.filter.cpu:CPUGammaFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
       <pre id="onyx.plugin:PluginFilterCPU" />
       <dep id="onyx.core:IDisplayContextCPU" />
@@ -21,8 +32,48 @@
       <dep id="onyx.core:IChannelCPU" />
       <dep id="onyx.plugin:PluginStatus" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\NoiseFilter.as" mod="1335629941511" size="2175" optimizedsize="1470">
-      <def id="onyx.filter.cpu:NoiseFilter" />
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUMirrorFilter.as" mod="1336338067719" size="2101" optimizedsize="1279">
+      <def id="onyx.filter.cpu:CPUMirrorFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.core:IChannelCPU" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUColorFilter.as" mod="1336338037081" size="1999" optimizedsize="1171">
+      <def id="onyx.filter.cpu:CPUColorFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="com.quasimondo.geom:ColorMatrix" />
+      <dep id="AS3" />
+      <dep id="flash.filters:ColorMatrixFilter" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.core:IChannelCPU" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUHaloFilter.as" mod="1336338064174" size="2039" optimizedsize="1204">
+      <def id="onyx.filter.cpu:CPUHaloFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="onyx.core:IPlugin" />
+      <dep id="AS3" />
+      <dep id="onyx.core:IPluginBlendCPU" />
+      <dep id="onyx.core:Onyx" />
+      <dep id="flash.filters:BlurFilter" />
+      <dep id="onyx.display:DisplaySurface" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.display:CONST_IDENTITY" />
+      <dep id="onyx.core:IChannelCPU" />
+      <dep id="onyx.plugin:PluginStatus" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUNoiseFilter.as" mod="1336338069749" size="2203" optimizedsize="1476">
+      <def id="onyx.filter.cpu:CPUNoiseFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
       <pre id="onyx.plugin:PluginFilterCPU" />
       <dep id="onyx.core:IDisplayContextCPU" />
@@ -39,43 +90,8 @@
       <dep id="onyx.parameter:IParameter" />
       <dep id="flash.geom:ColorTransform" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20121928121937.as" mod="1335629977701" size="782" optimizedsize="288">
-      <def id="OnyxPublicCPUFilters20121928121937" />
-      <pre id="flash.display:Sprite" />
-      <dep id="onyx.filter.cpu:NoiseFilter" />
-      <dep id="onyx.filter.cpu:GammaFilter" />
-      <dep id="onyx.filter.cpu:RepeaterFilter" />
-      <dep id="AS3" />
-      <dep id="onyx.filter.cpu:ColorFilter" />
-      <dep id="onyx.filter.cpu:HaloFilter" />
-      <dep id="onyx.filter.cpu:MirrorFilter" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\MirrorFilter.as" mod="1335565363236" size="2073" optimizedsize="1273">
-      <def id="onyx.filter.cpu:MirrorFilter" />
-      <pre id="onyx.core:IPluginFilterCPU" />
-      <pre id="onyx.plugin:PluginFilterCPU" />
-      <dep id="onyx.core:IDisplayContextCPU" />
-      <dep id="AS3" />
-      <dep id="flash.geom:Rectangle" />
-      <dep id="flash.geom:Matrix" />
-      <dep id="onyx.core:parameter" />
-      <dep id="onyx.core:IChannelCPU" />
-      <dep id="onyx.plugin:PluginStatus" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\ColorFilter.as" mod="1335565333236" size="1980" optimizedsize="1165">
-      <def id="onyx.filter.cpu:ColorFilter" />
-      <pre id="onyx.core:IPluginFilterCPU" />
-      <pre id="onyx.plugin:PluginFilterCPU" />
-      <dep id="onyx.core:IDisplayContextCPU" />
-      <dep id="com.quasimondo.geom:ColorMatrix" />
-      <dep id="AS3" />
-      <dep id="flash.filters:ColorMatrixFilter" />
-      <dep id="onyx.core:parameter" />
-      <dep id="onyx.core:IChannelCPU" />
-      <dep id="onyx.plugin:PluginStatus" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\RepeaterFilter.as" mod="1335565382978" size="1881" optimizedsize="1132">
-      <def id="onyx.filter.cpu:RepeaterFilter" />
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPURepeaterFilter.as" mod="1336338071663" size="1909" optimizedsize="1138">
+      <def id="onyx.filter.cpu:CPURepeaterFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
       <pre id="onyx.plugin:PluginFilterCPU" />
       <dep id="onyx.core:IDisplayContextCPU" />
@@ -86,22 +102,6 @@
       <dep id="onyx.core:parameter" />
       <dep id="onyx.core:IChannelCPU" />
       <dep id="flash.geom:Point" />
-      <dep id="onyx.plugin:PluginStatus" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\HaloFilter.as" mod="1335629855110" size="2008" optimizedsize="1198">
-      <def id="onyx.filter.cpu:HaloFilter" />
-      <pre id="onyx.core:IPluginFilterCPU" />
-      <pre id="onyx.plugin:PluginFilterCPU" />
-      <dep id="onyx.core:IDisplayContextCPU" />
-      <dep id="onyx.core:IPlugin" />
-      <dep id="AS3" />
-      <dep id="onyx.core:IPluginBlendCPU" />
-      <dep id="onyx.core:Onyx" />
-      <dep id="flash.filters:BlurFilter" />
-      <dep id="onyx.display:DisplaySurface" />
-      <dep id="onyx.core:parameter" />
-      <dep id="onyx.display:CONST_IDENTITY" />
-      <dep id="onyx.core:IChannelCPU" />
       <dep id="onyx.plugin:PluginStatus" />
     </script>
   </scripts>

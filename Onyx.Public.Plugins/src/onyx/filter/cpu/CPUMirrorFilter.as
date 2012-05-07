@@ -11,8 +11,8 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Filter.CPU.Mirror',
-		name		= 'Filter::Mirror',
+		id			= 'Onyx.Filter.Mirror::CPU',
+		name		= 'CPU Style::Mirror',
 		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
@@ -21,7 +21,7 @@ package onyx.filter.cpu {
 	[Parameter(type='number',		id='offset',	 	target='offset',		clamp='0,1', reset='0.5')]
 	[Parameter(type='boolean',		id='horizontal', 	target='horizontal',	reset='true')]
 	[Parameter(type='enum',			id='order',	 		target='order',			values='auto,1h,2h', reset='auto')]
-	public final class MirrorFilter extends PluginFilterCPU implements IPluginFilterCPU {
+	public final class CPUMirrorFilter extends PluginFilterCPU implements IPluginFilterCPU {
 
 		/**
 		 * 	@parameter

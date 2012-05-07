@@ -3,7 +3,7 @@ package onyx.filter.cpu {
 	import com.quasimondo.geom.ColorMatrix;
 	
 	import flash.display.*;
-	import flash.filters.ColorMatrixFilter;
+	import flash.filters.*;
 	import flash.geom.*;
 	
 	import onyx.core.*;
@@ -14,8 +14,8 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Display.Filter.ColorFilter::CPU',
-		name		= 'Color::Adjust',
+		id			= 'Onyx.Filter.ColorFilter::CPU',
+		name		= 'CPU Color::Adjust',
 		depends		= 'Onyx.Core.Display',
 		vendor		= 'Daniel Hai',
 		version		= '1.0'
@@ -27,8 +27,7 @@ package onyx.filter.cpu {
 	[Parameter(type='number',		id='hue',	 		name='Hue',			clamp='-1,1',	reset='0')]
 	[Parameter(type='number',		id='threshold',		name='Threshold', 	clamp='0,1',	reset='0')]
 	
-		
-	public final class ColorFilter extends PluginFilterCPU implements IPluginFilterCPU {
+	public final class CPUColorFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
 		 * 	@private
