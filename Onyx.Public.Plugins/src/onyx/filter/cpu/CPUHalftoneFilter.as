@@ -14,8 +14,8 @@ package onyx.filter.cpu {
 	use namespace parameter;
 	
 	[PluginInfo(
-		id			= 'Onyx.Display.Filter.Halftone::CPU',
-		name		= 'Halftone::Filter',
+		id			= 'Onyx.Filter.Halftone::CPU',
+		name		= 'CPU Style::Halftone',
 		depends		= 'Onyx.Core.Display',
 		vendor		= 'Bruce Lane',
 		version		= '1.0'
@@ -61,7 +61,7 @@ package onyx.filter.cpu {
 		 * 	@public
 		 */	
 		override public function validate():void {
-			
+			buffer				= new DisplaySurface( context.width, context.height, true, 0x00);
 			super.validate();
 			
 		}
