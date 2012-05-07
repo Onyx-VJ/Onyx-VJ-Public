@@ -23,7 +23,7 @@ package onyx.filter.cpu {
 	
 	[Parameter(type='int',			id='amount',	target='amount', reset='20',	clamp='1,100')]
 	
-	final public class HalftoneFilter extends PluginFilterCPU implements IPluginFilterCPU {
+	final public class CPUHalftoneFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
 		 * 	@public
