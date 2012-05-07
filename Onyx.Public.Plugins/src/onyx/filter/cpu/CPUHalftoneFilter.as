@@ -72,6 +72,7 @@ package onyx.filter.cpu {
 		public function render(context:IDisplayContextCPU):Boolean {
 			
 			smooth.applyEffect(context.surface);
+			tone.size = amount;
 			tone.applyEffect(context.surface);
 			context.copyPixels(context.surface);
 			blend.render(context.target, context.surface, buffer);
