@@ -4,6 +4,7 @@ package onyx.filter.cpu {
 	import flash.events.*;
 	import flash.geom.*;
 	import flash.text.*;
+	import flash.utils.getTimer;
 	
 	import onyx.core.*;
 	import onyx.display.*;
@@ -23,23 +24,32 @@ package onyx.filter.cpu {
 	
 	[Parameter(type='int',				id='amount',		target='tone/size',		reset='20',	clamp='10,100')]
 	[Parameter(type='colorTransform',	id='blendAmount',	target='blendAmount',	channels='rgba')]
+	[Parameter(type='int',				id='delay',			target='delay',		 	reset='100',	clamp='1,1000')]
+	[Parameter(type='boolean',			id='flicker', 		target='flicker',		reset='false')]
 	
 	final public class CPUHalftoneFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
-		 * 	@public
+		 * 	@parameter
 		 */
-		parameter var status:String;
-		
+		parameter var amount:int					= 20;
 		/**
 		 * 	@parameter
 		 */
-		parameter var amount:int				= 20;
+		parameter var delay:int						= 100;
+		/**
+		 * 	@parameter
+		 */
+		parameter var flicker:Boolean				= false;
+		/**
+		 * 	@private
+		 */
+		private var time:int						= getTimer();
 		
 		private var matrix_:Matrix;
 		private var smooth:Smooth;  
 		
-		parameter const tone:HalftoneColor		= new HalftoneColor();
+		parameter const tone:HalftoneColor			= new HalftoneColor();
 		
 		private var buffer:DisplaySurface;
 		
@@ -75,19 +85,28 @@ package onyx.filter.cpu {
 		 */
 		public function render(context:IDisplayContextCPU):Boolean {
 			
-			// copy the previous over
-			buffer.copyPixels(context.surface, context.rect, CONST_IDENTITY);
-			
-			// apply everything to the buffer
-			smooth.applyEffect(buffer);
+			var rtn:Boolean = true;
+			if (getTimer() - time >= delay) {
+								
+				// copy the previous over
+				buffer.copyPixels(context.surface, context.rect, CONST_IDENTITY);
+				
+				// apply everything to the buffer
+				smooth.applyEffect(buffer);
+	
+				// apply the effect
+				tone.applyEffect(buffer);
+				
+				// target, base, blend, amount
+				
+				// swap buffer
+				rtn = blend.render(context.target, context.surface, buffer, blendAmount);
 
-			// apply the effect
-			tone.applyEffect(buffer);
-			
-			// target, base, blend, amount
-
+				time			= getTimer();
+			}
 			// swap buffer
-			return blend.render(context.target, context.surface, buffer, blendAmount);
+			if (!flicker) rtn = blend.render(context.target, context.surface, buffer, blendAmount);
+			return rtn;
 		}			
 		/**
 		 * 	@public
