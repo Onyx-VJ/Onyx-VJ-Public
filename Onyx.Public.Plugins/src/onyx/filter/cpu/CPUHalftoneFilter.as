@@ -85,7 +85,7 @@ package onyx.filter.cpu {
 		 */
 		public function render(context:IDisplayContextCPU):Boolean {
 			
-			var rtn:Boolean = true;
+			var rtn:Boolean = false;
 			if (getTimer() - time >= delay) {
 								
 				// copy the previous over

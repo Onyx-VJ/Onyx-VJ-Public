@@ -98,7 +98,7 @@ package onyx.filter.cpu
 			uvt = new Vector.<Number>(num_details * num_details * 2, true);
 			var i:int;
 			var j:int;
-			// é ‚ç‚¹åˆæœŸåŒ–ã€‚å¤–å´2ã¤åˆ†ã¯è¡¨ç¤ºã—ãªã„ã®ã§ç„¡é§„ãªå‡¦ç†ï¼†ãƒ¡ãƒ¢ãƒªã«ãƒ»ãƒ»ãƒ»
+			
 			for (i = 2; i < num_details - 2; i++) {
 				for (j = 2; j < num_details - 2; j++) {
 					vertices[getIndex(j, i)] = new Vertex(
@@ -110,7 +110,7 @@ package onyx.filter.cpu
 					}
 				}
 			}
-			// æ°´é¢é–¢ä¿‚åˆæœŸåŒ–
+			
 			heights = new Vector.<Vector.<Number>>(num_details, true);
 			velocity = new Vector.<Vector.<Number>>(num_details, true);
 			for (i = 0; i < num_details; i++) {
@@ -121,16 +121,10 @@ package onyx.filter.cpu
 					velocity[i][j] = 0;
 				}
 			}
-			 
-			return PluginStatus.OK;
-		}
-		/**
-		 * 	@public
-		 */	
-		override public function validate():void {
-			buffer				= new DisplaySurface( context.width, context.height, true, 0x00FF00);
-			super.validate();
 			
+			buffer = new DisplaySurface( context.width, context.height, true, 0x00);
+			
+			return PluginStatus.OK;
 		}
 		
 		/**
@@ -162,6 +156,8 @@ package onyx.filter.cpu
 			// dispose
 			super.dispose();
 			
+			// dispose
+			buffer.dispose();
 		}	
 
 		
@@ -187,7 +183,7 @@ package onyx.filter.cpu
 					var len:Number = 1 / Math.sqrt(nx * nx + ny * ny + 1);
 					nx *= len;
 					ny *= len;
-					// ã¡ã‚‡ã£ã¨å¼ã‚’å¤‰æ›´ã—ã¦å¹³é¢ã§ã‚‚ãƒ†ã‚¯ã‚¹ãƒãƒ£ãŒè¦‹ãˆã‚‹ã‚ˆã†ã«
+					
 					uvt[index * 2] = nx * 0.5 + 0.5 + ((i - num_details * 0.5) * inv_num_details * 0.25);
 					uvt[index * 2 + 1] = ny * 0.5 + 0.5 + ((num_details * 0.5 - j) * inv_num_details * 0.25);
 				}
@@ -237,8 +233,7 @@ package onyx.filter.cpu
 		}
 		
 		private function transformVertices():void {
-			
-			// xè»¸å›žè»¢ã¨ãƒ“ãƒ¥ãƒ¼å¤‰æ›ãƒ»ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³å¤‰æ›ã‚’å®Ÿè¡Œ
+
 			
 			var angle:Number = 70 * Math.PI / 180;
 			var sin:Number = Math.sin(angle);
@@ -247,18 +242,17 @@ package onyx.filter.cpu
 				var v:Vertex = vertices[i];
 				if(v != null) {
 					var x:Number = v.x;
-					// xè??å??è??è??å??ã??ã??ã??
+					
 					var y:Number = cos * v.y - sin * v.z;
 					var z:Number = sin * v.y + cos * v.z;
-					// ã??ã??ã??ã??ã??ã??ã??ã??å??æ??ã??ã??ã??ã??ã??ã??ã??ã??(ã??ã??ã??ã??ã??é??ã??)
+					
 					z = 1 / (z + 60);
-					//z = 1 / (z + 100);
-					// ç??æ??ã??ã??ã??ã??ã??ã??ã??ã??å??æ??
+					
 					x *= z;
 					y *= z;
-					// ã??ã??ã?ªã??ã??åº?æ??ã??æ??ã??ã??
-					x = x * context.width/2 + context.width/2;//232.5 + 232.5;
-					y = y * context.height/2 + context.height/2; //232.5 + 182.5;
+					
+					x = x * context.width/2 + context.width/2;
+					y = y * context.height/2 + context.height/2;
 					transformedVertices[i * 2] = x;
 					transformedVertices[i * 2 + 1] = y;
 				}
