@@ -19,7 +19,7 @@ package onyx.filter.cpu {
 	)]
 		
 	[Parameter(type='integer',		id='width', 	target='width', clamp='1,100')]
-	public final class CPUEdgeBlend extends PluginFilterCPU implements IPluginFilterCPU {
+	public final class CPUEdgeBlendFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		private var matrix:Array				= [0, -2, 0, -2, 8, -2, 0, -2, 0];
 		private var transform:ColorTransform = new ColorTransform();
