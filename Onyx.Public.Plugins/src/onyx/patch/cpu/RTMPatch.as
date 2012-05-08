@@ -96,7 +96,7 @@ package onyx.patch.cpu {
 		 * 	@private
 		 */
 		private function handleConnection(event:NetStatusEvent):void {
-			Console.Log(Console.MESSAGE, 'RTMPatch: ' + event.info.code);
+			Console.Log(CONSOLE::MESSAGE, 'RTMPatch: ' + event.info.code);
 			switch (event.info.code) {
 				case 'NetConnection.Connect.Success':
 					
@@ -119,7 +119,7 @@ package onyx.patch.cpu {
 		 */
 		public function onMetaData(info:Object):void {
 			
-			Console.Log(Console.MESSAGE, 'RTMPatch: ' + info.width, info.height);
+			Console.Log(CONSOLE::MESSAGE, 'RTMPatch: ' + info.width, info.height);
 			
 			invalid = true;
 			
@@ -169,7 +169,7 @@ package onyx.patch.cpu {
 				try {
 					context.draw(video, renderMatrix, null, null, null, smoothing);
 				} catch (e:Error) {
-					Console.Log(Console.ERROR, e.message);
+					Console.Log(CONSOLE::ERROR, e.message);
 				}
 			}
 			return true;

@@ -10,17 +10,6 @@
       <dep id="flash.geom:Matrix3D" />
       <dep id="flash.geom:Point" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20123306173313.as" mod="1336339993470" size="800" optimizedsize="288">
-      <def id="OnyxPublicCPUFilters20123306173313" />
-      <pre id="flash.display:Sprite" />
-      <dep id="onyx.filter.cpu:CPUNoiseFilter" />
-      <dep id="onyx.filter.cpu:CPUMirrorFilter" />
-      <dep id="AS3" />
-      <dep id="onyx.filter.cpu:CPUColorFilter" />
-      <dep id="onyx.filter.cpu:CPUGammaFilter" />
-      <dep id="onyx.filter.cpu:CPUHaloFilter" />
-      <dep id="onyx.filter.cpu:CPURepeaterFilter" />
-    </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUGammaFilter.as" mod="1336338039945" size="1816" optimizedsize="1139">
       <def id="onyx.filter.cpu:CPUGammaFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
@@ -56,7 +45,31 @@
       <dep id="onyx.core:IChannelCPU" />
       <dep id="onyx.plugin:PluginStatus" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUHaloFilter.as" mod="1336338064174" size="2039" optimizedsize="1204">
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUHalftoneFilter.as" mod="1336499478756" size="5708" optimizedsize="3293">
+      <def id="onyx.filter.cpu:CPUHalftoneFilter" />
+      <pre id="onyx.core:IPluginFilterCPU" />
+      <pre id="onyx.plugin:PluginFilterCPU" />
+      <pre id="Object" />
+      <dep id="flash.display:BitmapDataChannel" />
+      <dep id="onyx.core:IDisplayContextCPU" />
+      <dep id="flash.display:BitmapData" />
+      <dep id="onyx.core:IPluginBlendCPU" />
+      <dep id="flash.geom:Rectangle" />
+      <dep id="onyx.core:Onyx" />
+      <dep id="Math" />
+      <dep id="onyx.display:DisplaySurface" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.display:CONST_IDENTITY" />
+      <dep id="onyx.core:IChannelCPU" />
+      <dep id="flash.geom:Point" />
+      <dep id="onyx.plugin:PluginStatus" />
+      <dep id="flash.filters:BitmapFilterQuality" />
+      <dep id="AS3" />
+      <dep id="flash.geom:Matrix" />
+      <dep id="flash.filters:BlurFilter" />
+      <dep id="flash.geom:ColorTransform" />
+    </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUHaloFilter.as" mod="1336499284853" size="2131" optimizedsize="1238">
       <def id="onyx.filter.cpu:CPUHaloFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
       <pre id="onyx.plugin:PluginFilterCPU" />
@@ -90,6 +103,18 @@
       <dep id="onyx.parameter:IParameter" />
       <dep id="flash.geom:ColorTransform" />
     </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20125108135149.as" mod="1336499509722" size="835" optimizedsize="288">
+      <def id="OnyxPublicCPUFilters20125108135149" />
+      <pre id="flash.display:Sprite" />
+      <dep id="onyx.filter.cpu:CPUHalftoneFilter" />
+      <dep id="onyx.filter.cpu:CPUNoiseFilter" />
+      <dep id="onyx.filter.cpu:CPUMirrorFilter" />
+      <dep id="AS3" />
+      <dep id="onyx.filter.cpu:CPUColorFilter" />
+      <dep id="onyx.filter.cpu:CPUGammaFilter" />
+      <dep id="onyx.filter.cpu:CPUHaloFilter" />
+      <dep id="onyx.filter.cpu:CPURepeaterFilter" />
+    </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPURepeaterFilter.as" mod="1336338071663" size="1909" optimizedsize="1138">
       <def id="onyx.filter.cpu:CPURepeaterFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
@@ -114,12 +139,14 @@
     <ext id="onyx.core:IPluginBlendCPU" />
     <ext id="flash.filters:BlurFilter" />
     <ext id="flash.geom:ColorTransform" />
+    <ext id="flash.filters:BitmapFilterQuality" />
     <ext id="flash.geom:Point" />
     <ext id="onyx.parameter:IParameter" />
     <ext id="onyx.plugin:PluginFilterCPU" />
     <ext id="onyx.display:CONST_IDENTITY" />
     <ext id="Math" />
     <ext id="flash.display:BitmapData" />
+    <ext id="flash.display:BitmapDataChannel" />
     <ext id="onyx.core:parameter" />
     <ext id="flash.geom:Rectangle" />
     <ext id="onyx.core:Onyx" />

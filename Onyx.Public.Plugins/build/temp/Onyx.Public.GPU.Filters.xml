@@ -22,8 +22,8 @@
       <dep id="onyx.core:IChannelGPU" />
       <dep id="onyx.plugin:PluginStatus" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20123306173314.as" mod="1336339994719" size="667" optimizedsize="288">
-      <def id="OnyxPublicGPUFilters20123306173314" />
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20125108135150.as" mod="1336499511015" size="667" optimizedsize="288">
+      <def id="OnyxPublicGPUFilters20125108135150" />
       <pre id="flash.display:Sprite" />
       <dep id="onyx.filter.gpu:GPUTestFilter" />
       <dep id="AS3" />

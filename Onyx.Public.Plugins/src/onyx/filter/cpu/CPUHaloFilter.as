@@ -45,7 +45,7 @@ package onyx.filter.cpu {
 		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
 			
 			if (!blend || blend.initialize(context) !== PluginStatus.OK) {
-				return new PluginStatus('Error Initializing HaloFilter');
+				return new PluginStatus('Error Initializing blend');
 			}
 			
 			this.owner		= owner;
@@ -75,10 +75,19 @@ package onyx.filter.cpu {
 		 */
 		public function render(context:IDisplayContextCPU):Boolean {
 			
+			// context.surface is the previous render
 			buffer.applyFilter(context.surface, context.rect, CONST_IDENTITY, filter);
-			blend.render(context.target, context.surface, buffer);
 			
-			return true;
+			// render the blend mode
+			// where to render, base, blend
+			return blend.render(context.target, context.surface, buffer);
+		}
+		
+		override public function dispose():void {
+			
+			super.dispose();
+			buffer.dispose();
+			
 		}
 	}
 }

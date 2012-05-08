@@ -21,7 +21,8 @@ package onyx.filter.cpu {
 		version		= '1.0'
 	)]
 	
-	[Parameter(type='int',			id='amount',	target='amount', reset='20',	clamp='1,100')]
+	[Parameter(type='int',				id='amount',		target='tone/size',		reset='20',	clamp='10,100')]
+	[Parameter(type='colorTransform',	id='blendAmount',	target='blendAmount',	channels='rgba')]
 	
 	final public class CPUHalftoneFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
@@ -37,33 +38,36 @@ package onyx.filter.cpu {
 		
 		private var matrix_:Matrix;
 		private var smooth:Smooth;  
-		private var tone:HalftoneColor; 
+		
+		parameter const tone:HalftoneColor		= new HalftoneColor();
+		
 		private var buffer:DisplaySurface;
+		
 		/**
 		 * 	@parameter
 		 */
-		private var blend:IPluginBlendCPU		= Onyx.CreateInstance('Onyx.Display.Blend.Overlay::CPU') as IPluginBlendCPU;
-		/**
-		 * 	@public
-		 */
-		public function initialize(owner:IChannelCPU, channel:IDisplayContextCPU):PluginStatus {
-			this.context	= channel;
-			this.owner		= owner;
-			smooth = new Smooth();       
-			smooth.strength = 2;
-			tone = new HalftoneColor();    
-			tone.size = amount;
-			matrix_ = new Matrix( 1, 0, 0, 1, 0, 0); 
-			return PluginStatus.OK;
-		}
+		private var blend:IPluginBlendCPU			= Onyx.CreateInstance('Onyx.Display.Blend.Overlay::CPU') as IPluginBlendCPU;
+		
+		// blend amount?
+		parameter var blendAmount:ColorTransform	= new ColorTransform();
 		
 		/**
 		 * 	@public
-		 */	
-		override public function validate():void {
-			buffer				= new DisplaySurface( context.width, context.height, true, 0x00);
-			super.validate();
+		 */
+		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
 			
+			this.context		= context;
+			this.owner			= owner;
+			
+			smooth				= new Smooth();       
+			smooth.strength 	= 2;
+   
+			tone.size			= amount;
+			matrix_				= new Matrix( 1, 0, 0, 1, 0, 0);
+			
+			buffer				= new DisplaySurface( context.width, context.height, true, 0x00);
+			
+			return PluginStatus.OK;
 		}
 		
 		/**
@@ -71,12 +75,19 @@ package onyx.filter.cpu {
 		 */
 		public function render(context:IDisplayContextCPU):Boolean {
 			
-			smooth.applyEffect(context.surface);
-			tone.size = amount;
-			tone.applyEffect(context.surface);
-			context.copyPixels(context.surface);
-			blend.render(context.target, context.surface, buffer);
-			return true;
+			// copy the previous over
+			buffer.copyPixels(context.surface, context.rect, CONST_IDENTITY);
+			
+			// apply everything to the buffer
+			smooth.applyEffect(buffer);
+
+			// apply the effect
+			tone.applyEffect(buffer);
+			
+			// target, base, blend, amount
+
+			// swap buffer
+			return blend.render(context.target, context.surface, buffer, blendAmount);
 		}			
 		/**
 		 * 	@public
@@ -86,12 +97,16 @@ package onyx.filter.cpu {
 			// dispose
 			super.dispose();
 			
+			// dispose
+			buffer.dispose();
+			
 		}
 	}
 }
 import flash.display.BitmapData;
 import flash.display.BitmapDataChannel;
 import flash.geom.Rectangle;
+
 /**
  * @author YOSHIDA, Akio (Aquioux)
  */
@@ -111,6 +126,11 @@ class HalftoneColor
 		
 		blockPixels_ = _size * _size;
 	}
+	
+	public function get size():uint {
+		return _size;
+	}
+	
 	private var _size:uint = 16;               
 	private var width_:Number;           
 	private var height_:Number;           
