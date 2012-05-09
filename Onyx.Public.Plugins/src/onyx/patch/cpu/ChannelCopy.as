@@ -56,7 +56,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			// the channel has changed!
 			if (invalidParameters.channel) {
@@ -73,9 +73,6 @@ package onyx.patch.cpu {
 				updated = false;
 
 			}
-			
-			// validate
-			super.validate();
 		}
 		
 		/**

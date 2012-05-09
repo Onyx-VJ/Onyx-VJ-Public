@@ -69,7 +69,7 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			var firstField:Boolean;
 			switch (order) {
@@ -103,9 +103,6 @@ package onyx.filter.cpu {
 					matrix		= new Matrix(1, 0, 0, -1, 0, context.height * offset * 2);
 				}
 			}
-			
-			// validate -- sets invalid to false, invalid parameters to null
-			super.validate();
 			
 		}
 		

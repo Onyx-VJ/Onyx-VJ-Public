@@ -57,7 +57,7 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			if (amount !== 1) {
 				for (var v:int = 0; v < 256; v++) {
@@ -66,9 +66,6 @@ package onyx.filter.cpu {
 					RLUT[v] = GLUT[v] << 8;
 				}
 			}
-			
-			// we're done
-			super.validate();
 
 		}
 		

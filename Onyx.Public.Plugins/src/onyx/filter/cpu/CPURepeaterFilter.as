@@ -60,15 +60,14 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			var square:int		= amount * amount;
 			
 			matrix				= new Matrix(1 / amount, 0, 0, 1 / amount);
 			buffer				= new DisplaySurface(matrix.a * context.width, matrix.d * context.height, true, 0x00);
 			rect				= buffer.rect;
-			
-			super.validate();
+
 		}
 		
 		/**

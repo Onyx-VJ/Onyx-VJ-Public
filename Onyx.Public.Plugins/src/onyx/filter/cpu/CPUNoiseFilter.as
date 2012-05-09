@@ -66,7 +66,7 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			for each (var parameter:IParameter in invalidParameters) {
 				
@@ -83,11 +83,7 @@ package onyx.filter.cpu {
 						
 						break;
 				}
-				
 			}
-			
-			super.validate();
-
 		}
 		
 		/**

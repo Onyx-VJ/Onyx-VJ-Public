@@ -135,13 +135,7 @@ package onyx.patch.cpu {
 			video.attachNetStream(stream);
 
 			// invalidate something
-			invalid					= true;
-			invalidParameters.scale	= getParameter('scale');
-			
-			// re-validate the size
-			trace('matrix', renderMatrix);
-			validate();
-			trace('matrix', renderMatrix);
+			invalidate(getParameter('scale'));
 
 		}
 		

@@ -97,12 +97,12 @@ package onyx.filter.gpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			// if everything is default, we shouldn't render anything
 			if (threshold === 0 && hue === 0 && contrast === 0 && brightness === 0 && saturation === 1) {
 				colors = null;
-				return super.validate();
+				return;
 			}
 			
 			// reset
@@ -144,9 +144,6 @@ package onyx.filter.gpu {
 			colors[15]	= matrix[18];
 			
 //			offset[3]	= matrix[19];
-			
-			// we're done
-			super.validate();
 			
 		}
 		

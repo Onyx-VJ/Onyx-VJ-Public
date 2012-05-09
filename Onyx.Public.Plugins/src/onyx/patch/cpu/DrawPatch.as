@@ -144,15 +144,13 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			var graphics:Graphics	= shape.graphics;
 			
 			// set line style
 			graphics.lineStyle(thickness, color, lineAlpha);
 			
-			// validate
-			super.validate();
 		}
 		
 		/**

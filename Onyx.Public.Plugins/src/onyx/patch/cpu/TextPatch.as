@@ -52,14 +52,11 @@ package onyx.patch.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			label.setTextFormat(format);
 			label.defaultTextFormat = format;
-						
-			// reset the label text
-			super.validate();
-
+			
 		}
 		
 		/**

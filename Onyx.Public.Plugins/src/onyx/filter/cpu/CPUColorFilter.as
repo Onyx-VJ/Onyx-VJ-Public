@@ -81,11 +81,11 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		override public function validate():void {
+		override protected function validate(invalidParameters:Object):void {
 			
 			if (threshold === 0 && hue === 0 && contrast === 0 && brightness === 0 && saturation === 1) {
 				filter = null;
-				return super.validate();
+				return;
 			}
 			
 			matrix.reset();
@@ -102,9 +102,6 @@ package onyx.filter.cpu {
 			
 			// store the filter
 			filter = matrix.filter;
-			
-			// we're done
-			super.validate();
 			
 		}
 		
