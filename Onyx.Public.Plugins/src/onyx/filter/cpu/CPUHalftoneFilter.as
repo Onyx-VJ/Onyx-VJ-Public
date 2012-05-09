@@ -75,7 +75,7 @@ package onyx.filter.cpu {
 			tone.size			= amount;
 			matrix_				= new Matrix( 1, 0, 0, 1, 0, 0);
 			
-			buffer				= new DisplaySurface( context.width, context.height, true, 0x00);
+			buffer				= context.requestSurface(true);
 			
 			return PluginStatus.OK;
 		}
@@ -116,8 +116,8 @@ package onyx.filter.cpu {
 			// dispose
 			super.dispose();
 			
-			// dispose
-			buffer.dispose();
+			// release
+			context.releaseSurface(buffer);
 			
 		}
 	}

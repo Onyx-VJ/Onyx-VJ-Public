@@ -43,7 +43,7 @@ package onyx.filter.cpu {
 		/**
 		 * 	@private
 		 */
-		private var buffer:DisplaySurface;
+		private var noise:DisplaySurface;
 		
 		/**
 		 * 	@private
@@ -57,7 +57,7 @@ package onyx.filter.cpu {
 			
 			this.owner		= owner;
 			this.context	= context;
-			this.buffer		= new DisplaySurface(context.width, context.height, false, 0);
+			this.noise		= new DisplaySurface(context.width, context.height, false, 0);
 			this.rect		= context.rect;
 			
 			return PluginStatus.OK;
@@ -68,9 +68,8 @@ package onyx.filter.cpu {
 		 */
 		override protected function validate(invalidParameters:Object):void {
 			
-			for each (var parameter:IParameter in invalidParameters) {
-				
-				switch (parameter.id) {
+			for (var i:String in invalidParameters) {
+				switch (i) {
 					case 'blendMode':
 						
 						blendMode.initialize(context);
@@ -79,7 +78,7 @@ package onyx.filter.cpu {
 					case 'greyScale':
 						
 						// renoise
-						buffer.noise(Math.random() * 255, 0, 255, 7, greyScale);
+						noise.noise(Math.random() * 255, 0, 255, 7, greyScale);
 						
 						break;
 				}
@@ -93,10 +92,15 @@ package onyx.filter.cpu {
 			
 			var position:int		= Math.random() * rect.width;
 			
+			// copy the buffer
+			context.copyPixels(context.surface);
+			
 			// blend the first / second
-			blendMode.render(context.target, context.surface, buffer, colorTransform, new Matrix(1,0,0,1, -rect.width + position), new Rectangle(0,0,position,rect.height));
-			blendMode.render(context.target, context.surface, buffer, colorTransform, new Matrix(1,0,0,1, position), new Rectangle(position,0,rect.width - position,rect.height));
+			// TODO: we use the target twice because they don't swap buffers?  But what about blends that do?
+			blendMode.render(context.target, context.target,	noise, colorTransform, new Matrix(1,0,0,1, -rect.width + position), new Rectangle(0,0,position,rect.height));
+			blendMode.render(context.target, context.target,	noise, colorTransform, new Matrix(1,0,0,1, position), new Rectangle(position,0,rect.width - position,rect.height));
 
+			// return true
 			return true;
 		}
 	}
