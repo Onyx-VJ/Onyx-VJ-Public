@@ -57,7 +57,7 @@ package onyx.filter.cpu {
 			
 			this.owner		= owner;
 			this.context	= context;
-			this.noise		= new DisplaySurface(context.width, context.height, false, 0);
+			this.noise		= context.requestSurface(true);
 			this.rect		= context.rect;
 			
 			return PluginStatus.OK;
@@ -102,6 +102,15 @@ package onyx.filter.cpu {
 
 			// return true
 			return true;
+		}
+		override public function dispose():void {
+			
+			// dispose
+			super.dispose();
+			
+			// dispose
+			context.releaseSurface(noise);
+			
 		}
 	}
 }

@@ -122,7 +122,7 @@ package onyx.filter.cpu
 				}
 			}
 			
-			buffer = new DisplaySurface( context.width, context.height, true, 0x00);
+			buffer				= context.requestSurface(true);
 			
 			return PluginStatus.OK;
 		}
@@ -157,7 +157,7 @@ package onyx.filter.cpu
 			super.dispose();
 			
 			// dispose
-			buffer.dispose();
+			context.releaseSurface(buffer);
 		}	
 
 		

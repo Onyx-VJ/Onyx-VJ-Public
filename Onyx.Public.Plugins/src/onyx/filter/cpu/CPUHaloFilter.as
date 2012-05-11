@@ -49,7 +49,7 @@ package onyx.filter.cpu {
 			}
 			
 			this.owner		= owner;
-			this.buffer		= new DisplaySurface(context.width, context.height, true, 0x00);
+			this.buffer		= context.requestSurface(true);
 			this.context	= context;
 			
 			return PluginStatus.OK;
@@ -85,8 +85,11 @@ package onyx.filter.cpu {
 		
 		override public function dispose():void {
 			
+			// dispose
 			super.dispose();
-			buffer.dispose();
+			
+			// dispose
+			context.releaseSurface(buffer);
 			
 		}
 	}

@@ -65,7 +65,7 @@ package onyx.filter.cpu {
 		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
 			
 			this.owner		= owner;
-			this.buffer		= new DisplaySurface(context.width, context.height, true, 0x00);
+			this.buffer		= context.requestSurface(true);
 			this.context	= context;
 			
 			return PluginStatus.OK;
@@ -88,8 +88,11 @@ package onyx.filter.cpu {
 		
 		override public function dispose():void {
 			
+			// dispose
 			super.dispose();
-			buffer.dispose();
+			
+			// release
+			context.releaseSurface(buffer);
 			
 		}
 	}

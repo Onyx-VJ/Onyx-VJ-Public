@@ -74,8 +74,11 @@ package onyx.filter.cpu {
 		
 		override public function dispose():void {
 			
+			// dispose
 			super.dispose();
-			buffer.dispose();
+			
+			// release
+			context.releaseSurface(buffer);
 			
 		}
 	}
