@@ -10,6 +10,13 @@
       <dep id="flash.geom:Matrix3D" />
       <dep id="flash.geom:Point" />
     </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20122210202234.as" mod="1336695754937" size="667" optimizedsize="288">
+      <def id="OnyxPublicGPUFilters20122210202234" />
+      <pre id="flash.display:Sprite" />
+      <dep id="onyx.filter.gpu:GPUTestFilter" />
+      <dep id="AS3" />
+      <dep id="onyx.filter.gpu:GPUColorFilter" />
+    </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\gpu\GPUColorFilter.as" mod="1336577993260" size="2889" optimizedsize="1908">
       <def id="onyx.filter.gpu:GPUColorFilter" />
       <pre id="onyx.core:IPluginFilterGPU" />
@@ -21,13 +28,6 @@
       <dep id="onyx.core:parameter" />
       <dep id="onyx.core:IChannelGPU" />
       <dep id="onyx.plugin:PluginStatus" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20120709170705.as" mod="1336597625176" size="667" optimizedsize="288">
-      <def id="OnyxPublicGPUFilters20120709170705" />
-      <pre id="flash.display:Sprite" />
-      <dep id="onyx.filter.gpu:GPUTestFilter" />
-      <dep id="AS3" />
-      <dep id="onyx.filter.gpu:GPUColorFilter" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\gpu\GPUTestFilter.as" mod="1336338879343" size="1164" optimizedsize="684">
       <def id="onyx.filter.gpu:GPUTestFilter" />

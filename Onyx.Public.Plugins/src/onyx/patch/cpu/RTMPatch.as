@@ -54,6 +54,8 @@ package onyx.patch.cpu {
 			// set to the same size as the blah blah
 			dimensions.width	= context.width;
 			dimensions.height	= context.height;
+
+			connect();
 			
 			return super.initialize(context, channel, path, content);
 		}

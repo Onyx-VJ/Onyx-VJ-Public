@@ -62,12 +62,12 @@ package onyx.patch.cpu {
 			if (invalidParameters.channel) {
 				
 				if (listenChannel) {
-					listenChannel.removeEventListener(OnyxEvent.CHANNEL_RENDER, handleRender);	
+					listenChannel.removeEventListener(OnyxEvent.CHANNEL_RENDER_CPU, handleRender);	
 				}
 				
 				listenChannel = channel as IChannelCPU;
 				if (listenChannel) {
-					listenChannel.addEventListener(OnyxEvent.CHANNEL_RENDER, handleRender);	
+					listenChannel.addEventListener(OnyxEvent.CHANNEL_RENDER_CPU, handleRender);	
 				}
 				
 				updated = false;
@@ -111,9 +111,10 @@ package onyx.patch.cpu {
 		 * 	@public
 		 */
 		override public function dispose():void {
-			
+
+			// bind
 			if (listenChannel) {
-				listenChannel.addEventListener(OnyxEvent.CHANNEL_RENDER, handleRender);
+				listenChannel.addEventListener(OnyxEvent.CHANNEL_RENDER_CPU, handleRender);
 				listenChannel = null;
 			}
 						

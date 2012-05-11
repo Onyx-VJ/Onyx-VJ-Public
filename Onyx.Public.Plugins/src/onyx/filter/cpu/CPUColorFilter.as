@@ -112,6 +112,7 @@ package onyx.filter.cpu {
 			
 			// run!
 			if (filter) {
+				context.clear();
 				context.applyFilter(matrix.filter, context.surface);
 				return true;
 			}
