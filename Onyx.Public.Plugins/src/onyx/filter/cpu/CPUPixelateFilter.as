@@ -19,45 +19,36 @@ package onyx.filter.cpu {
 		version		= '1.0'
 	)]
 	
-	[Parameter(type='integer',		id='amount', 	target='amount', clamp='2,200')]
-	[Parameter(type='number',		id='alpha', 	target='alpha', clamp='0,1')]
+	[Parameter(type='integer',				id='amount', 	target='amount', clamp='2,200', reset='2')]
+	[Parameter(type='colorTransform',		id='alpha', 	target='blendTransform', channels='a')]
+	[Parameter(type='blendMode',			id='blend', 	target='blendMode', allowNull='true')]
 	public final class CPUPixelateFilter extends PluginFilterCPU implements IPluginFilterCPU {
 		
 		/**
 		 * 	@private
 		 */
-		private var buffer:DisplaySurface				= new DisplaySurface(40, 30, true, 0x00);	
-		
-		private var _blendTransform:ColorTransform	= new ColorTransform(1,1,1,1);
-		
-		parameter function get alpha():Number {
-			return _blendTransform.alphaMultiplier;
-		}
-		
-		parameter function set alpha(value:Number):void {
-			_blendTransform.alphaMultiplier = value;
-		}
-		parameter function get amount():int {
-			return context.width / buffer.width;
-		}
-		
-		parameter function set amount(value:int):void {
-			if (buffer) {
-				buffer.dispose();
-			}
-			if (value > 0) {
-				buffer = new DisplaySurface(context.width / value, context.height / value, true, 0x00);
-			}
-		}
-		
-		private var _matrix:Matrix					= new Matrix();
+		private var buffer:DisplaySurface;	
 		
 		/**
 		 * 	@parameter
 		 */
-		private var blend:IPluginBlendCPU		= Onyx.CreateInstance('Onyx.Display.Blend.Overlay::CPU') as IPluginBlendCPU;
+		parameter const blendTransform:ColorTransform		= new ColorTransform(1,1,1,1);
 		
-
+		/**
+		 * 	@parameter
+		 */
+		parameter var amount:int				= 2;
+		
+		/**
+		 * 	@parameter
+		 */
+		parameter var blendMode:IPluginBlendCPU	= null;
+		
+		/**
+		 * 	@private
+		 */
+		private const pMatrix:Matrix			= new Matrix();
+		private const iMatrix:Matrix			= new Matrix();
 		
 		/**
 		 * 	@public
@@ -66,8 +57,7 @@ package onyx.filter.cpu {
 			
 			// context
 			this.context	= context;
-			this.owner		= owner;
-			this.buffer		= context.requestSurface(true);		
+			this.owner		= owner;		
 			
 			return PluginStatus.OK;
 		}
@@ -75,26 +65,74 @@ package onyx.filter.cpu {
 		/**
 		 * 	@public
 		 */
-		public function render(context:IDisplayContextCPU):Boolean {
-			var matrix:Matrix = new Matrix();
-			matrix.scale(buffer.width / context.width, buffer.height / context.height);
+		override protected function validate(invalidParameters:Object):void {
 			
-			buffer.draw(context.surface, matrix);
-			
-			matrix.invert();
-			matrix.concat(_matrix);	
-			
-			//return blend.render(context.target, context.surface, buffer, _blendTransform, matrix);
-			return blend.render(context.target, context.target, buffer, _blendTransform, matrix);
+			for (var i:String in invalidParameters) {
+				switch (i) {
+					case 'amount':
+						
+						if (buffer) {
+							buffer.dispose();
+						}
+						buffer = new DisplaySurface(context.width / amount, context.height / amount, false, 0x00);
+						
+						pMatrix.identity();
+						pMatrix.scale(buffer.width / context.width, buffer.height / context.height);
+						
+						// identity
+						iMatrix.identity();
+						iMatrix.copyFrom(pMatrix);
+						iMatrix.invert();
+						
+						break;
+					case 'blendMode':
+						
+						if (blendMode.initialize(context) !== PluginStatus.OK) {
+							trace('error!');
+							blendMode = null;
+						}
+						
+						break;
+					case 'alpha':
+						break;
+				}
+				
+			}
 		}
 		
+		/**
+		 * 	@public
+		 */
+		public function render(context:IDisplayContextCPU):Boolean {
+			
+			// draw
+			buffer.draw(context.surface, pMatrix);
+			
+			// return the blend value, since sometimes it doesn't swap the buffer
+			if (blendMode) {
+				return blendMode.render(context.target, context.surface, buffer, blendTransform, iMatrix);
+			}
+			
+			// no blend, draw directly
+				
+			context.clear();
+			context.draw(buffer, iMatrix, blendTransform, null, null, false);
+			
+			return true;
+		}
+		
+		/**
+		 * 	@public
+		 */
 		override public function dispose():void {
+			
+			// release
+			if (buffer) {
+				buffer.dispose();
+			}
 			
 			// dispose
 			super.dispose();
-			
-			// release
-			context.releaseSurface(buffer);
 			
 		}
 	}
