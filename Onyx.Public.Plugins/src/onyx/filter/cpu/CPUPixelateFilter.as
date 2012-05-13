@@ -64,9 +64,10 @@ package onyx.filter.cpu {
 		 */
 		public function initialize(owner:IChannelCPU, context:IDisplayContextCPU):PluginStatus {
 			
-			this.owner		= owner;
-			this.buffer		= context.requestSurface(true);
+			// context
 			this.context	= context;
+			this.owner		= owner;
+			this.buffer		= context.requestSurface(true);		
 			
 			return PluginStatus.OK;
 		}
@@ -83,7 +84,8 @@ package onyx.filter.cpu {
 			matrix.invert();
 			matrix.concat(_matrix);	
 			
-			return blend.render(context.target, context.surface, buffer, _blendTransform, matrix);
+			//return blend.render(context.target, context.surface, buffer, _blendTransform, matrix);
+			return blend.render(context.target, context.target, buffer, _blendTransform, matrix);
 		}
 		
 		override public function dispose():void {

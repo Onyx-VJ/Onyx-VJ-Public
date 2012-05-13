@@ -62,8 +62,6 @@ package onyx.filter.cpu {
 			
 			var thresh:uint = (amount << 16 | amount << 8 | amount);
 			
-
-			
 			buffer.copyPixels(context.surface,context.rect, CONST_IDENTITY);
 			buffer.threshold(buffer, buffer.rect, CONST_IDENTITY, mode === 'high pass' ? '<=' : '>=', thresh, 0x00FFFFFF, 0x00FFFFFF);
 			
