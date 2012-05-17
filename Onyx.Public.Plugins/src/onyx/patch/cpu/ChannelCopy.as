@@ -13,14 +13,14 @@ package onyx.patch.cpu {
 	
 	use namespace parameter;
 	
-	[Parameter(type='channelCPU',	id='channel', target='channel')]
+	[Parameter(type='channelCPU',	id='targetChannel', target='targetChannel')]
 	
-	final public class ChannelCopy extends PluginPatchCPU {
+	final public class ChannelCopy extends PluginPatchTransformCPU {
 		
 		/**
 		 * 	@private
 		 */
-		parameter var channel:IChannel;
+		parameter var targetChannel:IChannel;
 		
 		/**
 		 * 	@private
@@ -59,13 +59,13 @@ package onyx.patch.cpu {
 		override protected function validate(invalidParameters:Object):void {
 			
 			// the channel has changed!
-			if (invalidParameters.channel) {
+			if (invalidParameters.targetChannel) {
 				
 				if (listenChannel) {
 					listenChannel.removeEventListener(OnyxEvent.CHANNEL_RENDER_CPU, handleRender);	
 				}
 				
-				listenChannel = channel as IChannelCPU;
+				listenChannel = targetChannel as IChannelCPU;
 				if (listenChannel) {
 					listenChannel.addEventListener(OnyxEvent.CHANNEL_RENDER_CPU, handleRender);	
 				}
@@ -73,6 +73,9 @@ package onyx.patch.cpu {
 				updated = false;
 
 			}
+			
+			// invalid as well
+			super.validate(invalidParameters);
 		}
 		
 		/**
@@ -99,8 +102,8 @@ package onyx.patch.cpu {
 		override public function render(context:IDisplayContextCPU):Boolean {
 			
 			if (updated) {
-				updated = false;
-				context.copyPixels(buffer);
+				updated	= false;
+				context.draw(buffer, renderMatrix);
 				return true;
 			}
 			
@@ -114,7 +117,7 @@ package onyx.patch.cpu {
 
 			// bind
 			if (listenChannel) {
-				listenChannel.addEventListener(OnyxEvent.CHANNEL_RENDER_CPU, handleRender);
+				listenChannel.removeEventListener(OnyxEvent.CHANNEL_RENDER_CPU, handleRender);
 				listenChannel = null;
 			}
 						

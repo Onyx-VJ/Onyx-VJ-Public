@@ -21,6 +21,24 @@
       <dep id="onyx.core:IChannelCPU" />
       <dep id="onyx.plugin:PluginStatus" />
     </script>
+    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20122017182023.as" mod="1337293223291" size="1038" optimizedsize="288">
+      <def id="OnyxPublicCPUFilters20122017182023" />
+      <pre id="flash.display:Sprite" />
+      <dep id="onyx.filter.cpu:CPUNoiseFilter" />
+      <dep id="onyx.filter.cpu:CPUPixelateFilter" />
+      <dep id="onyx.filter.cpu:CPUColorFilter" />
+      <dep id="onyx.filter.cpu:CPUGammaFilter" />
+      <dep id="onyx.filter.cpu:CPUEdgeBlendFilter" />
+      <dep id="onyx.filter.cpu:CPUHaloFilter" />
+      <dep id="onyx.filter.cpu:CPUFlipFilter" />
+      <dep id="onyx.filter.cpu:CPURepeaterFilter" />
+      <dep id="onyx.filter.cpu:CPUHalftoneFilter" />
+      <dep id="onyx.filter.cpu:CPUMirrorFilter" />
+      <dep id="AS3" />
+      <dep id="onyx.filter.cpu:CPUWaterFilter" />
+      <dep id="onyx.filter.cpu:CPUHoloFilter" />
+      <dep id="onyx.filter.cpu:CPUPassThroughFilter" />
+    </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUColorFilter.as" mod="1336673654150" size="2065" optimizedsize="1201">
       <def id="onyx.filter.cpu:CPUColorFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
@@ -95,24 +113,6 @@
       <dep id="onyx.core:parameter" />
       <dep id="onyx.core:IChannelCPU" />
       <dep id="onyx.plugin:PluginStatus" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20124513154544.as" mod="1336938344335" size="1038" optimizedsize="288">
-      <def id="OnyxPublicCPUFilters20124513154544" />
-      <pre id="flash.display:Sprite" />
-      <dep id="onyx.filter.cpu:CPUNoiseFilter" />
-      <dep id="onyx.filter.cpu:CPUPixelateFilter" />
-      <dep id="onyx.filter.cpu:CPUColorFilter" />
-      <dep id="onyx.filter.cpu:CPUGammaFilter" />
-      <dep id="onyx.filter.cpu:CPUEdgeBlendFilter" />
-      <dep id="onyx.filter.cpu:CPUHaloFilter" />
-      <dep id="onyx.filter.cpu:CPUFlipFilter" />
-      <dep id="onyx.filter.cpu:CPURepeaterFilter" />
-      <dep id="onyx.filter.cpu:CPUHalftoneFilter" />
-      <dep id="onyx.filter.cpu:CPUMirrorFilter" />
-      <dep id="AS3" />
-      <dep id="onyx.filter.cpu:CPUWaterFilter" />
-      <dep id="onyx.filter.cpu:CPUHoloFilter" />
-      <dep id="onyx.filter.cpu:CPUPassThroughFilter" />
     </script>
     <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPURepeaterFilter.as" mod="1336577993259" size="1963" optimizedsize="1159">
       <def id="onyx.filter.cpu:CPURepeaterFilter" />

@@ -18,7 +18,7 @@ package onyx.patch.cpu {
 	[Parameter(type='text',		id='streamName',	target='streamName')]
 	[Parameter(type='function',	id='connect',		target='connect')]
 	
-	final public class RTMPatch extends PluginPatchTransformCPU {
+	final public class RTMPatch extends PluginPatchCPU {
 		
 		/**
 		 * 	@parameter
@@ -136,9 +136,6 @@ package onyx.patch.cpu {
 			video	= new Video(info.width, info.height);
 			video.attachNetStream(stream);
 
-			// invalidate something
-			invalidate(getParameter('scale'));
-
 		}
 		
 		/**
@@ -163,7 +160,7 @@ package onyx.patch.cpu {
 			if (video) {
 				context.clear();
 				try {
-					context.draw(video, renderMatrix, null, null, null, smoothing);
+					context.draw(video);
 				} catch (e:Error) {
 					Console.Log(CONSOLE::ERROR, e.message);
 				}
