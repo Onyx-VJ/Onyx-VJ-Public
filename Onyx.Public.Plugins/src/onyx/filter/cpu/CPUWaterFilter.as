@@ -72,6 +72,44 @@ package onyx.filter.cpu
 		/**
 		 * 	@public
 		 */
+		/**
+		 * 	@private
+		 */
+		private function handleInteraction(e:InteractionEvent):void {
+
+			switch (e.type) {
+				case InteractionEvent.RIGHT_CLICK:
+					break;
+				case InteractionEvent.MOUSE_DOWN:
+					
+					context.addEventListener(InteractionEvent.MOUSE_MOVE, 		handleInteraction);
+					context.addEventListener(InteractionEvent.MOUSE_UP,			handleInteraction);
+					
+					mox = e.x; 
+					moy = e.y; 
+					press = true;
+					
+					break;
+				case InteractionEvent.MOUSE_MOVE:
+					
+					mox = e.x; 
+					moy = e.y; 
+					if (press) drag();
+					
+					break;
+				case InteractionEvent.MOUSE_UP:
+					
+					press = false;
+					
+					context.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
+					context.removeEventListener(InteractionEvent.MOUSE_UP,		handleInteraction);
+					
+					break;
+			}
+			
+			invalid = true;
+			
+		}
 		public function initialize(owner:IChannelCPU, channel:IDisplayContextCPU):PluginStatus {
 			this.context	= channel;
 			this.owner		= owner;
@@ -79,18 +117,9 @@ package onyx.filter.cpu
 			count = 0;
 			sprite = new Sprite();
 			
-			addEventListener( MouseEvent.MOUSE_DOWN, onClick );
-			addEventListener(MouseEvent.MOUSE_UP,
-				function(e:Event = null):void {
-					press = false;
-				});
-			addEventListener(MouseEvent.MOUSE_MOVE,
-				function(e:MouseEvent = null):void {
-					mox = e.localX; 
-					moy = e.localY; 
-					
-					if (press) drag();
-				});
+			// add a listener for mouse down
+			context.addEventListener(InteractionEvent.MOUSE_DOWN, 	handleInteraction);
+			context.addEventListener(InteractionEvent.RIGHT_CLICK,	handleInteraction);
 			
 			vertices = new Vector.<Vertex>(num_details * num_details, true);
 			transformedVertices = new Vector.<Number>(num_details * num_details * 2, true);
@@ -153,19 +182,16 @@ package onyx.filter.cpu
 		 */
 		override public function dispose():void {
 			
+			context.removeEventListener(InteractionEvent.RIGHT_CLICK,	handleInteraction);
+			context.removeEventListener(InteractionEvent.MOUSE_DOWN,	handleInteraction);
+			context.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
+			context.removeEventListener(InteractionEvent.MOUSE_UP,		handleInteraction);
 			// dispose
 			super.dispose();
 			
 			// dispose
 			context.releaseSurface(buffer);
 		}	
-
-		
-		private function onClick(event:MouseEvent):void {
-			mox = event.localX; 
-			moy = event.localY; 
-			press = true;
-		}
 		
 		private function setMesh():void {
 			for (var i:int = 2; i < num_details - 2; i++) {

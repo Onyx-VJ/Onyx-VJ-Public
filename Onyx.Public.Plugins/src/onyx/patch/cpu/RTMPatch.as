@@ -45,7 +45,6 @@ package onyx.patch.cpu {
 		 * 	@private
 		 */
 		private var video:Video;
-		
 		/**
 		 * 	@public
 		 */
@@ -64,7 +63,7 @@ package onyx.patch.cpu {
 		 * 	@parameter
 		 */
 		parameter function connect():void {
-			
+			trace("connect");
 			if (connection.uri !== host) {
 				
 				if (connection.connected) {
@@ -72,11 +71,24 @@ package onyx.patch.cpu {
 				}
 				
 				connection.addEventListener(NetStatusEvent.NET_STATUS, handleConnection);
+				connection.client = this;
 				connection.connect(host);
 				
 			}
 		}
-		
+		/**
+		 * 	@public
+		 */
+		public function onBWDone():void {
+			trace("onBWDone");
+		}
+		/**
+		 * 	@public
+		 */
+		public function onFCSubscribe(info:Object):void{
+			trace("onFCSubscribe");
+		}
+
 		/**
 		 * 	@private
 		 */
