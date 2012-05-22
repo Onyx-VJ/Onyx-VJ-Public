@@ -53,7 +53,7 @@ package onyx.patch.cpu {
 			dimensions.width 		= context.width;
 			dimensions.height		= context.height;
 			
-			_canvas = new BitmapData(context.width, context.height, false, 0x000000);
+			_canvas = new DisplaySurface(context.width, context.height, true, 0x00);
 			var cb:Bitmap = new Bitmap(_canvas);
 			addChild(cb);
 			
@@ -90,9 +90,6 @@ package onyx.patch.cpu {
 			switch (e.type) {
 				case InteractionEvent.MOUSE_DOWN:
 					
-					context.addEventListener(InteractionEvent.MOUSE_MOVE, 		handleInteraction);
-					context.addEventListener(InteractionEvent.MOUSE_UP,			handleInteraction);
-					
 					// move graphics
 					mx = e.x;
 					my = e.y;
@@ -119,7 +116,7 @@ package onyx.patch.cpu {
 					
 					case 'colorTransform':
 						
-						trace( colorTransform.redMultiplier);
+						//trace( colorTransform.redMultiplier);
 						
 						break;
 				}
@@ -216,6 +213,9 @@ package onyx.patch.cpu {
 		 * 	@public
 		 */
 		override public function dispose():void {
+			
+			context.removeEventListener(InteractionEvent.MOUSE_DOWN,	handleInteraction);
+			context.removeEventListener(InteractionEvent.MOUSE_MOVE,	handleInteraction);
 			
 			// dispose
 			super.dispose();
