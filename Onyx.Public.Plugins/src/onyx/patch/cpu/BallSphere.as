@@ -72,9 +72,9 @@ package onyx.patch.cpu {
 			dimensions.width 		= context.width;
 			dimensions.height		= context.height;
 
-			Console.Log(3,'BallSphere v 0.0.11');
-			Console.Log(3,'Credits to bradsedito ( http://wonderfl.net/user/bradsedito )');
-			Console.Log(3,'Adapted by Bruce LANE (http://www.batchass.fr)');
+			Console.Log(Console.MESSAGE,'BallSphere v 0.0.11');
+			Console.Log(Console.MESSAGE,'Credits to bradsedito ( http://wonderfl.net/user/bradsedito )');
+			Console.Log(Console.MESSAGE,'Adapted by Bruce LANE (http://www.batchass.fr)');
 			
 			CENTER_X = context.width >> 1;
 			CENTER_Y = context.height >> 1;

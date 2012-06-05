@@ -58,7 +58,7 @@ package onyx.patch.cpu {
 		 */
 		override public function initialize(context:IDisplayContextCPU, channel:IChannelCPU, path:IFileReference, content:Object):PluginStatus {
 			
-			Console.Log(3, 'QuarternionLights from: http://wonderfl.net/c/3nhD');
+			Console.Log(Console.MESSAGE, 'QuarternionLights from: http://wonderfl.net/c/3nhD');
 			
 			var decoded:ByteArray = Base64.decode(asShader.join(""));  
 			decoded.position = 0;  

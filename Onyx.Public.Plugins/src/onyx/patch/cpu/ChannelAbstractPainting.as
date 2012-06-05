@@ -78,9 +78,9 @@ package onyx.patch.cpu {
 			// create
 			buffer					= new DisplaySurface(context.width, context.height, true, 0x00);
 
-			Console.Log(3,'AbstractPainting');
-			Console.Log(3,'Credits to George0rwell ( http://wonderfl.net/user/George0rwell )');
-			Console.Log(3,'Adapted by Bruce LANE (http://www.batchass.fr)');
+			Console.Log(Console.MESSAGE,'AbstractPainting');
+			Console.Log(Console.MESSAGE,'Credits to George0rwell ( http://wonderfl.net/user/George0rwell )');
+			Console.Log(Console.MESSAGE,'Adapted by Bruce LANE (http://www.batchass.fr)');
 			_startX = context.width/2;
 			_startY = context.height/2;
 			

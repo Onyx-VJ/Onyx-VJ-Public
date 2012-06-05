@@ -32,7 +32,7 @@ package onyx.patch.cpu {
 		 */
 		override public function initialize(context:IDisplayContextCPU, channel:IChannelCPU, path:IFileReference, content:Object):PluginStatus {
 			
-			Console.Log(3, 'Space Pirate Transmission from: http://wonderfl.net/c/f4H9');
+			Console.Log(Console.MESSAGE, 'Space Pirate Transmission from: http://wonderfl.net/c/f4H9');
 			_shape1 = new Shape();
 			_shape2 = new Shape();
 			_container = new Sprite();

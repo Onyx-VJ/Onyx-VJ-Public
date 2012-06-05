@@ -1,23 +1,16 @@
 <report>
   <scripts>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\com\quasimondo\geom\ColorMatrix.as" mod="1336337669952" size="16979" optimizedsize="9731">
-      <def id="com.quasimondo.geom:ColorMatrix" />
-      <pre id="Object" />
-      <dep id="flash.display:BitmapData" />
+    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\gpu\GPUTestFilter.as" mod="1336425365623" size="1178" optimizedsize="684">
+      <def id="onyx.filter.gpu:GPUTestFilter" />
+      <pre id="onyx.core:IPluginFilterGPU" />
+      <pre id="onyx.plugin:PluginFilterGPU" />
       <dep id="AS3" />
-      <dep id="flash.filters:ColorMatrixFilter" />
-      <dep id="Math" />
-      <dep id="flash.geom:Matrix3D" />
-      <dep id="flash.geom:Point" />
+      <dep id="onyx.core:IDisplayContextGPU" />
+      <dep id="onyx.core:parameter" />
+      <dep id="onyx.core:IChannelGPU" />
+      <dep id="onyx.plugin:PluginStatus" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20122017182024.as" mod="1337293224666" size="667" optimizedsize="288">
-      <def id="OnyxPublicGPUFilters20122017182024" />
-      <pre id="flash.display:Sprite" />
-      <dep id="onyx.filter.gpu:GPUTestFilter" />
-      <dep id="AS3" />
-      <dep id="onyx.filter.gpu:GPUColorFilter" />
-    </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\gpu\GPUColorFilter.as" mod="1336577993260" size="2889" optimizedsize="1908">
+    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\gpu\GPUColorFilter.as" mod="1336669541186" size="2903" optimizedsize="1908">
       <def id="onyx.filter.gpu:GPUColorFilter" />
       <pre id="onyx.core:IPluginFilterGPU" />
       <pre id="onyx.plugin:PluginFilterGPU" />
@@ -29,15 +22,22 @@
       <dep id="onyx.core:IChannelGPU" />
       <dep id="onyx.plugin:PluginStatus" />
     </script>
-    <script name="D:\Projects\Onyx-VJ\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\gpu\GPUTestFilter.as" mod="1336338879343" size="1164" optimizedsize="684">
-      <def id="onyx.filter.gpu:GPUTestFilter" />
-      <pre id="onyx.core:IPluginFilterGPU" />
-      <pre id="onyx.plugin:PluginFilterGPU" />
+    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\src\com\quasimondo\geom\ColorMatrix.as" mod="1336425365600" size="16993" optimizedsize="9731">
+      <def id="com.quasimondo.geom:ColorMatrix" />
+      <pre id="Object" />
+      <dep id="flash.display:BitmapData" />
       <dep id="AS3" />
-      <dep id="onyx.core:IDisplayContextGPU" />
-      <dep id="onyx.core:parameter" />
-      <dep id="onyx.core:IChannelGPU" />
-      <dep id="onyx.plugin:PluginStatus" />
+      <dep id="flash.filters:ColorMatrixFilter" />
+      <dep id="Math" />
+      <dep id="flash.geom:Matrix3D" />
+      <dep id="flash.geom:Point" />
+    </script>
+    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20121205161235.as" mod="1338905555704" size="681" optimizedsize="288">
+      <def id="OnyxPublicGPUFilters20121205161235" />
+      <pre id="flash.display:Sprite" />
+      <dep id="onyx.filter.gpu:GPUTestFilter" />
+      <dep id="AS3" />
+      <dep id="onyx.filter.gpu:GPUColorFilter" />
     </script>
   </scripts>
   <external-defs>

@@ -26,7 +26,7 @@ package onyx.patch.cpu {
 		/**
 		 * 	@private
 		 */
-		parameter var colorTransform:ColorTransform	= new ColorTransform(0.96,0.33,0.12,0.5);
+		parameter var colorTransform:ColorTransform	= new ColorTransform(1,0.33,0.12,1);
 		
 		private var mx:int = 320;
 		private var my:int = 240;

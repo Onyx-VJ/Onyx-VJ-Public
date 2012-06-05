@@ -79,7 +79,7 @@ package onyx.patch.cpu {
 			proj.fieldOfView = 90;
 			projMat = proj.toMatrix3D();			
 			// å??ã??ã??ã??ã??ã??ã?? BitmapData ã??å??æ??å??ã??ã??
-			canvasGlow = new DisplaySurface(context.width/4, context.height/4, true, 0x00);
+			canvasGlow = new DisplaySurface(context.width/4, context.height/4, true, 0x00FF00);
 			var bmp:Bitmap = new Bitmap(canvasGlow, PixelSnapping.NEVER, true);
 			bmp.scaleX = bmp.scaleY = 4;
 			bmp.smoothing = true;
@@ -130,11 +130,8 @@ package onyx.patch.cpu {
 				mtx3d.appendTranslation(0, 0, context.width / 2);
 				mtx3d.transformVectors(particles, particles2);
 				
-				// é??è??æ??å??ã??ã??å??è??å??ã??åº?æ??ã??è??ç??ã??ã??
 				Utils3D.projectVectors(projMat, particles2, xysRandom, uvts);
 				
-				// moveCounter ä??ä??ã?ªã??ã??ã??ã??ã??ã??ã??ã??æ??å??å??ã??é??ç??ã??è??ã??ã??ã??
-				// ã??ã??ã??ã?ªã??å??å??ã??ã??ã??ã??ã??ã??å??ç??ã??ã??ã??ã??ã??ã??ä??ç??ã??é??ç??ã??è??ã??ã??ã??
 				for (var i:int = 0; i < xysRandom.length; i++){
 					if (i < moveCounter * 2){
 						xys[i] += (letterPoints[i] - xys[i]) * .13;
@@ -143,20 +140,16 @@ package onyx.patch.cpu {
 					}
 				}
 				
-				// æ–‡å­—åˆ—è¡¨ç¤ºä¸­ã¯moveCounter ã‚’åŠ ç®—ã™ã‚‹
 				moveCounter = (f ? moveCounter + 100 : 0);
 				
-				// BitmapData ã«æç”»ã™ã‚‹
 				buffer.lock();
-				buffer.fillRect(buffer.rect, 0x000000);
+				buffer.fillRect(buffer.rect, 0x0000FF);
 				for (var j:int = 0; j < xys.length / 2; j++){
-					//canvas.setPixel32(xys[j * 2] + DISPLAY_WIDTH / 2, xys[j * 2 + 1] + DISPLAY_HEIGHT / 2, colors[j]);
 					buffer.setPixel32(xys[j * 2] + context.width / 2, xys[j * 2 + 1] + context.height / 2, 0xFFFFFF);
 				}
 				buffer.unlock();
 				
-				// å…‰ã‚‰ã›ã‚‹ãŸã‚ã®ã‚­ãƒ£ãƒ³ãƒã‚¹ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹
-				canvasGlow.fillRect(canvasGlow.rect, 0x000000);
+				canvasGlow.fillRect(canvasGlow.rect, 0xFF0000);
 				canvasGlow.draw(buffer, mtx);
 				
 				counter++;
@@ -212,6 +205,8 @@ package onyx.patch.cpu {
 			var bmd:BitmapData = createBitmapData(text);
 			initParticles(bmd);
 			xys = new Vector.<Number>(letterPoints.length);
+			
+			invalid = true;
 		}
 		/**
 		 * 	@public
