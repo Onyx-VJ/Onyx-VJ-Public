@@ -98,9 +98,6 @@ package onyx.patch.cpu {
 		 */
 		private function handleInteraction(e:InteractionEvent):void {
 			var graphics:Graphics	= shape.graphics;
-			
-			trace('xx', e);
-			
 			switch (e.type) {
 				case InteractionEvent.RIGHT_CLICK:
 					
