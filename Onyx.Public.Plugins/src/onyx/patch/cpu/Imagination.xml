@@ -1,0 +1,17 @@
+<project name="build.module" default="build">
+
+	<property name="build.root" location="../../../../" />
+	
+	<import file="${build.root}/build/ant.build.include.xml" />
+
+	<target name="build">
+		
+		<basename property="plugin.patch.file" file="${ant.file}" suffix=".xml" />
+		
+		<antcall target="build.patch">
+			<param name="plugin.class" value="onyx/patch/cpu/${plugin.patch.file}"/>
+		</antcall>
+
+	</target>
+	
+</project>

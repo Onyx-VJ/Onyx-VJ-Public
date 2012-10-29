@@ -32,8 +32,8 @@
       <dep id="flash.geom:Matrix3D" />
       <dep id="flash.geom:Point" />
     </script>
-    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20121205161235.as" mod="1338905555704" size="681" optimizedsize="288">
-      <def id="OnyxPublicGPUFilters20121205161235" />
+    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicGPUFilters20123505223555.as" mod="1338928555307" size="681" optimizedsize="288">
+      <def id="OnyxPublicGPUFilters20123505223555" />
       <pre id="flash.display:Sprite" />
       <dep id="onyx.filter.gpu:GPUTestFilter" />
       <dep id="AS3" />

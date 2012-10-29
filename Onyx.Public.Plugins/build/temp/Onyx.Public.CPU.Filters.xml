@@ -83,6 +83,26 @@
       <dep id="flash.display:TriangleCulling" />
       <dep id="flash.display:Sprite" />
     </script>
+    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20123505223552.as" mod="1338928552270" size="1118" optimizedsize="288">
+      <def id="OnyxPublicCPUFilters20123505223552" />
+      <pre id="flash.display:Sprite" />
+      <dep id="onyx.filter.cpu:CPUHairFilter" />
+      <dep id="onyx.filter.cpu:CPUInfiniteFilter" />
+      <dep id="onyx.filter.cpu:CPUNoiseFilter" />
+      <dep id="onyx.filter.cpu:CPUPixelateFilter" />
+      <dep id="onyx.filter.cpu:CPUColorFilter" />
+      <dep id="onyx.filter.cpu:CPUGammaFilter" />
+      <dep id="onyx.filter.cpu:CPUEdgeBlendFilter" />
+      <dep id="onyx.filter.cpu:CPUHaloFilter" />
+      <dep id="onyx.filter.cpu:CPUFlipFilter" />
+      <dep id="onyx.filter.cpu:CPURepeaterFilter" />
+      <dep id="onyx.filter.cpu:CPUHalftoneFilter" />
+      <dep id="onyx.filter.cpu:CPUMirrorFilter" />
+      <dep id="AS3" />
+      <dep id="onyx.filter.cpu:CPUWaterFilter" />
+      <dep id="onyx.filter.cpu:CPUHoloFilter" />
+      <dep id="onyx.filter.cpu:CPUPassThroughFilter" />
+    </script>
     <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUFlipFilter.as" mod="1336736533232" size="1676" optimizedsize="973">
       <def id="onyx.filter.cpu:CPUFlipFilter" />
       <pre id="onyx.core:IPluginFilterCPU" />
@@ -220,26 +240,6 @@
       <dep id="onyx.core:parameter" />
       <dep id="onyx.core:IChannelCPU" />
       <dep id="onyx.plugin:PluginStatus" />
-    </script>
-    <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\build\temp\OnyxPublicCPUFilters20121205161233.as" mod="1338905553771" size="1118" optimizedsize="288">
-      <def id="OnyxPublicCPUFilters20121205161233" />
-      <pre id="flash.display:Sprite" />
-      <dep id="onyx.filter.cpu:CPUHairFilter" />
-      <dep id="onyx.filter.cpu:CPUInfiniteFilter" />
-      <dep id="onyx.filter.cpu:CPUNoiseFilter" />
-      <dep id="onyx.filter.cpu:CPUPixelateFilter" />
-      <dep id="onyx.filter.cpu:CPUColorFilter" />
-      <dep id="onyx.filter.cpu:CPUGammaFilter" />
-      <dep id="onyx.filter.cpu:CPUEdgeBlendFilter" />
-      <dep id="onyx.filter.cpu:CPUHaloFilter" />
-      <dep id="onyx.filter.cpu:CPUFlipFilter" />
-      <dep id="onyx.filter.cpu:CPURepeaterFilter" />
-      <dep id="onyx.filter.cpu:CPUHalftoneFilter" />
-      <dep id="onyx.filter.cpu:CPUMirrorFilter" />
-      <dep id="AS3" />
-      <dep id="onyx.filter.cpu:CPUWaterFilter" />
-      <dep id="onyx.filter.cpu:CPUHoloFilter" />
-      <dep id="onyx.filter.cpu:CPUPassThroughFilter" />
     </script>
     <script name="C:\Users\b.lane\Documents\onyx-vj\Onyx-VJ-Public\Onyx.Public.Plugins\src\onyx\filter\cpu\CPUHaloFilter.as" mod="1336738976133" size="2155" optimizedsize="1244">
       <def id="onyx.filter.cpu:CPUHaloFilter" />
